@@ -7,6 +7,7 @@ aqui se va a definir el nombre y los atributos de cada nodo de mi app.
 Es la estructura minima de mi arbol de nodos.
 
 * Name: es el nombre del nodo.
+* tipo: es mas facil hacer debug pues se sabe el nombre del nodo que falla.
 * parent: es el nodo padre de este nodo, si lo tiene.
 * children: nodos hijos de este nodo.
 

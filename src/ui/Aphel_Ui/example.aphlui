@@ -1,11 +1,3 @@
-# Comentario del archivo de interfaz
-Node:
-    .name: "ventana_principal"
-    
-    Space2D:
-        .name: "contenedor_secundario"
-        .size: (800, 600)
-        
-        VisualNode:
-            .name: "panel_transparente"
-            .position: (10, 10)
+Window:
+    Node:
+        .name: "Nodo exito"

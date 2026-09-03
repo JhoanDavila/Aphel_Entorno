@@ -51,7 +51,7 @@ bool Parser::tryParseColor(const std::string& valStr, Color& outColor, int line)
         clean = hexWrapMatch[1].str();
     }
 
-    // 2. Formato HEX directo (ejemplo: FF0000, F00, FF0000FF)
+    // 2. Formato HEX directo sin # (ejemplo: FF0000, F00, FF0000FF)
     static const std::regex hexRegex(R"(^([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$)");
     if (std::regex_match(clean, hexRegex)) {
 
@@ -228,6 +228,16 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
         const auto& token = tokens[i];
 
         if (token.type == TokenType::NODE_TYPE) {
+
+            // Restricción: Solo un nodo 'Window' por archivo .aphlui
+            if (token.value == "Window" && root != nullptr) {
+                ErrorManager::logError(
+                    token.line,
+                    "Structure error: Only one 'Window' node is allowed per .aphlui file."
+                );
+                return nullptr;
+            }
+
             auto currentNode = createNodeByType(token.value);
 
             // Asignar identificador opcional si el siguiente token es de tipo NODE_NAME
