@@ -17,3 +17,8 @@ este es la base de los nodos visuales de la interfaz.
 ## Espacio 2D (hereda nodo visual):
 
 * Size: es un vector 2d con el tamaño (ancho, alto)
+## Ventana (hereda Espacio 2D):
+
+* Title: el titulo de la ventana
+* BackgroundColor: el color de fondo
+
