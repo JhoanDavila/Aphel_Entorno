@@ -1,0 +1,3 @@
+/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles/aphel.dir
+/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles/edit_cache.dir
+/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles/rebuild_cache.dir

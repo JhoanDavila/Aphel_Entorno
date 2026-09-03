@@ -1,8 +1,8 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "Token.h"
-#include "Node.h"
+#include "ui/lector_aphelui/tokenizer/Token.h"
+#include "ui/nodes/node/Node.h"
 #include <vector>
 #include <memory>
 
