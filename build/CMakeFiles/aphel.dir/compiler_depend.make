@@ -6,6 +6,7 @@ CMakeFiles/aphel.dir/src/main.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Token.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.h \
+  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.h \
@@ -374,6 +375,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o: /home/jhoan/pe
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.cpp \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Token.h \
+  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.h \
@@ -1257,6 +1259,8 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/pers
 
 /usr/include/linux/errno.h:
 
+/usr/include/features.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/__fpos_t.h:
 
 /usr/include/c++/13/bits/refwrap.h:
@@ -1291,10 +1295,6 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/pers
 
 /usr/include/asm-generic/errno-base.h:
 
-/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
-
-/usr/include/c++/13/bits/shared_ptr.h:
-
 /usr/include/c++/13/bits/nested_exception.h:
 
 /usr/include/c++/13/bits/istream.tcc:
@@ -1311,11 +1311,19 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/pers
 
 /usr/include/c++/13/bits/localefwd.h:
 
-/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
-
-/usr/include/c++/13/type_traits:
+/usr/include/c++/13/bits/cxxabi_forced.h:
 
 /usr/include/c++/13/backward/auto_ptr.h:
+
+/usr/include/c++/13/bits/algorithmfwd.h:
+
+/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.h:
+
+/usr/include/c++/13/bits/locale_classes.h:
+
+/usr/include/ctype.h:
+
+/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.h:
 
 /usr/include/c++/13/bits/sstream.tcc:
 
@@ -1327,15 +1335,7 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/pers
 
 /usr/include/c++/13/cwchar:
 
-/usr/include/c++/13/bits/algorithmfwd.h:
-
-/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.h:
-
-/usr/include/c++/13/bits/locale_classes.h:
-
-/usr/include/ctype.h:
-
-/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.h:
+/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.h:
 
 /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Token.h:
 
@@ -1348,10 +1348,6 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/pers
 /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.h:
 
 /usr/include/alloca.h:
-
-/usr/include/c++/13/bit:
-
-/usr/include/c++/13/bits/basic_string.tcc:
 
 /usr/include/x86_64-linux-gnu/bits/types/FILE.h:
 
@@ -1373,6 +1369,14 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/pers
 
 /usr/include/c++/13/bits/atomic_lockfree_defines.h:
 
+/usr/include/c++/13/bits/basic_string.tcc:
+
+/usr/include/c++/13/bit:
+
+/usr/include/x86_64-linux-gnu/sys/single_threaded.h:
+
+/usr/include/c++/13/type_traits:
+
 /usr/include/c++/13/bits/exception_defines.h:
 
 /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.h:
@@ -1388,8 +1392,6 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/pers
 /usr/include/c++/13/bits/requires_hosted.h:
 
 /usr/include/c++/13/bits/string_view.tcc:
-
-/usr/include/features.h:
 
 /usr/include/c++/13/backward/binders.h:
 
@@ -1435,7 +1437,9 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/pers
 
 /usr/include/c++/13/bits/cpp_type_traits.h:
 
-/usr/include/c++/13/bits/cxxabi_forced.h:
+/usr/include/x86_64-linux-gnu/bits/struct_mutex.h:
+
+/usr/include/c++/13/bits/shared_ptr.h:
 
 /usr/include/c++/13/bits/shared_ptr_atomic.h:
 
@@ -1495,9 +1499,9 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/pers
 
 /usr/include/x86_64-linux-gnu/bits/long-double.h:
 
-/usr/include/c++/13/bits/atomic_base.h:
-
 /usr/include/c++/13/bits/new_allocator.h:
+
+/usr/include/c++/13/bits/atomic_base.h:
 
 /usr/include/c++/13/bits/uses_allocator_args.h:
 

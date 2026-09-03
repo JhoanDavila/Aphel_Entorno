@@ -4,7 +4,6 @@
 
 Vector2D Parser::parseVector2D(const std::string& valStr) {
     Vector2D vec{0, 0};
-    // Eliminamos los paréntesis si están presentes
     std::string clean = valStr;
     if (!clean.empty() && clean.front() == '(') clean.erase(0, 1);
     if (!clean.empty() && clean.back() == ')') clean.pop_back();
@@ -34,8 +33,10 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
         if (token.type == TokenType::NODE_TYPE) {
             std::shared_ptr<Node> currentNode = nullptr;
 
-            // 1. Instanciación Polimórfica según el tipo de nodo
-            if (token.value == "VisualNode") {
+            // 1. Instanciación Polimórfica según la jerarquía
+            if (token.value == "2DSpace") {
+                currentNode = std::make_shared<Space2D>(token.value);
+            } else if (token.value == "VisualNode") {
                 currentNode = std::make_shared<VisualNode>(token.value);
             } else {
                 currentNode = std::make_shared<Node>(token.value);
@@ -46,7 +47,6 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
             while (peek < tokens.size() && tokens[peek].type == TokenType::PROPERTY) {
                 std::string propName = tokens[peek].value;
                 
-                // Si la propiedad tiene un valor correspondiente
                 if (peek + 1 < tokens.size() && tokens[peek + 1].type == TokenType::VALUE) {
                     std::string propValue = tokens[peek + 1].value;
 
@@ -54,21 +54,28 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
                     if (propName == ".name") {
                         currentNode->name = propValue;
                     } 
-                    // Asignación de .position (solo si es un VisualNode)
+                    // Asignación de .position (Aplica a VisualNode y Space2D por herencia)
                     else if (propName == ".position") {
                         auto visualRef = std::dynamic_pointer_cast<VisualNode>(currentNode);
                         if (visualRef) {
                             visualRef->position = parseVector2D(propValue);
                         }
                     }
+                    // Asignación de .size (Específico de Space2D)
+                    else if (propName == ".size") {
+                        auto spaceRef = std::dynamic_pointer_cast<Space2D>(currentNode);
+                        if (spaceRef) {
+                            Vector2D parsedSize = parseVector2D(propValue);
+                            spaceRef->size = {parsedSize.x, parsedSize.y};
+                        }
+                    }
 
-                    peek += 2; // Avanzamos la propiedad y su valor
+                    peek += 2;
                 } else {
                     peek++;
                 }
             }
 
-            // Actualizamos el índice principal para no volver a iterar sobre las propiedades procesadas
             i = peek - 1;
 
             // 3. Ubicación del nodo dentro del árbol jerárquico

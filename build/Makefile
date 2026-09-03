@@ -225,6 +225,30 @@ src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.s
 .PHONY : src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.s
 
+src/ui/nodes/2dspace/2DSpace.o: src/ui/nodes/2dspace/2DSpace.cpp.o
+.PHONY : src/ui/nodes/2dspace/2DSpace.o
+
+# target to build an object file
+src/ui/nodes/2dspace/2DSpace.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o
+.PHONY : src/ui/nodes/2dspace/2DSpace.cpp.o
+
+src/ui/nodes/2dspace/2DSpace.i: src/ui/nodes/2dspace/2DSpace.cpp.i
+.PHONY : src/ui/nodes/2dspace/2DSpace.i
+
+# target to preprocess a source file
+src/ui/nodes/2dspace/2DSpace.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.i
+.PHONY : src/ui/nodes/2dspace/2DSpace.cpp.i
+
+src/ui/nodes/2dspace/2DSpace.s: src/ui/nodes/2dspace/2DSpace.cpp.s
+.PHONY : src/ui/nodes/2dspace/2DSpace.s
+
+# target to generate assembly for a file
+src/ui/nodes/2dspace/2DSpace.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.s
+.PHONY : src/ui/nodes/2dspace/2DSpace.cpp.s
+
 src/ui/nodes/node/Node.o: src/ui/nodes/node/Node.cpp.o
 .PHONY : src/ui/nodes/node/Node.o
 
@@ -294,6 +318,9 @@ help:
 	@echo "... src/ui/lector_aphelui/tokenizer/Tokenizer.o"
 	@echo "... src/ui/lector_aphelui/tokenizer/Tokenizer.i"
 	@echo "... src/ui/lector_aphelui/tokenizer/Tokenizer.s"
+	@echo "... src/ui/nodes/2dspace/2DSpace.o"
+	@echo "... src/ui/nodes/2dspace/2DSpace.i"
+	@echo "... src/ui/nodes/2dspace/2DSpace.s"
 	@echo "... src/ui/nodes/node/Node.o"
 	@echo "... src/ui/nodes/node/Node.i"
 	@echo "... src/ui/nodes/node/Node.s"
