@@ -9,3 +9,8 @@ Es la estructura minima de mi arbol de nodos.
 * Name: es el nombre del nodo.
 * parent: es el nodo padre de este nodo, si lo tiene.
 * children: nodos hijos de este nodo.
+
+## Nodo visual (hereda nodo):
+este es la base de los nodos visuales de la interfaz.
+
+* position: es un vector 2d de X y Y: (X,Y)

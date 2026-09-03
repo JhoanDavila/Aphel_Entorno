@@ -2,9 +2,8 @@
 # asi se sentencia un nodo:
 Node:
     .name: "nodo_1"
-    Node:
-        .name: "nodo_1_1"
+    VisualNode:
+        .name: "nodo visual 1"
+        .position: (120,300)
     Node:
         .name: "nodo_1_2"
-        Node:
-            .name: "nodo_1_2_1"
