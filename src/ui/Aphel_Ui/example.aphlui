@@ -1,5 +1,9 @@
 #ejemplo
 Window:
     .title: "titulo"
+    .size: (20,2)
+    .backgroundcolor: (0,0,0,40)
+    .position: (0,1)
     Node:
+        .name: "nodo"
         

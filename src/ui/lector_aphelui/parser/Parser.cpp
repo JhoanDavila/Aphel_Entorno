@@ -2,33 +2,36 @@
 #include "ui/lector_aphelui/error_manager/ErrorManager.h"
 #include <stack>
 #include <sstream>
+#include <regex>
 
-Vector2D Parser::parseVector2D(const std::string& valStr) {
-    Vector2D vec{0, 0};
-    std::string clean = valStr;
-    if (!clean.empty() && clean.front() == '(') clean.erase(0, 1);
-    if (!clean.empty() && clean.back() == ')') clean.pop_back();
+// Parsea (x, y) asegurando que ambos sean números enteros
+bool Parser::tryParseVector2D(const std::string& valStr, Vector2D& outVec) {
+    // Regex que valida exactamente el formato (entero, entero) permitiendo espacios opcionales
+    static const std::regex vecRegex(R"(\(\s*(-?\d+)\s*,\s*(-?\d+)\s*\))");
+    std::smatch match;
 
-    size_t commaPos = clean.find(',');
-    if (commaPos != std::string::npos) {
+    if (std::regex_match(valStr, match, vecRegex)) {
         try {
-            vec.x = std::stoi(clean.substr(0, commaPos));
-            vec.y = std::stoi(clean.substr(commaPos + 1));
+            outVec.x = std::stoi(match[1].str());
+            outVec.y = std::stoi(match[2].str());
+            return true;
         } catch (...) {
-            vec.x = 0; vec.y = 0;
+            return false;
         }
     }
-    return vec;
+    return false;
 }
 
-Color Parser::parseColor(const std::string& valStr) {
-    Color color{0, 0, 0, 255};
+// Parsea formato Hex (#RGB, #RRGGBB, #RRGGBBAA) o RGB/RGBA(r, g, b, a)
+bool Parser::tryParseColor(const std::string& valStr, Color& outColor) {
     std::string clean = valStr;
 
-    // 1. Formato Hexadecimal (#RRGGBB o #RRGGBBAA o #RGB)
+    // 1. Formato Hexadecimal
     if (!clean.empty() && clean.front() == '#') {
+        static const std::regex hexRegex(R"(^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6}|[0-9a-fA-F]{8})$)");
+        if (!std::regex_match(clean, hexRegex)) return false;
+
         clean.erase(0, 1);
-        
         if (clean.length() == 3) {
             std::string expanded;
             for (char c : clean) { expanded += c; expanded += c; }
@@ -38,42 +41,51 @@ Color Parser::parseColor(const std::string& valStr) {
         try {
             unsigned int hexVal = std::stoul(clean, nullptr, 16);
             if (clean.length() == 6) {
-                color.r = (hexVal >> 16) & 0xFF;
-                color.g = (hexVal >> 8) & 0xFF;
-                color.b = hexVal & 0xFF;
-                color.a = 255;
+                outColor.r = (hexVal >> 16) & 0xFF;
+                outColor.g = (hexVal >> 8) & 0xFF;
+                outColor.b = hexVal & 0xFF;
+                outColor.a = 255;
             } else if (clean.length() == 8) {
-                color.r = (hexVal >> 24) & 0xFF;
-                color.g = (hexVal >> 16) & 0xFF;
-                color.b = (hexVal >> 8) & 0xFF;
-                color.a = hexVal & 0xFF;
+                outColor.r = (hexVal >> 24) & 0xFF;
+                outColor.g = (hexVal >> 16) & 0xFF;
+                outColor.b = (hexVal >> 8) & 0xFF;
+                outColor.a = hexVal & 0xFF;
             }
-        } catch (...) {}
-        return color;
+            return true;
+        } catch (...) {
+            return false;
+        }
     }
 
-    // 2. Formato RGB(r,g,b) o RGBA(r,g,b,a)
-    size_t start = clean.find('(');
-    size_t end = clean.find(')');
-    if (start != std::string::npos && end != std::string::npos && end > start) {
-        clean = clean.substr(start + 1, end - start - 1);
+    // 2. Formato RGB / RGBA: (r, g, b) o (r, g, b, a)
+    static const std::regex rgbRegex(R"(\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(?:,\s*(\d{1,3})\s*)?\))");
+    std::smatch match;
+
+    if (std::regex_match(clean, match, rgbRegex)) {
+        try {
+            int r = std::stoi(match[1].str());
+            int g = std::stoi(match[2].str());
+            int b = std::stoi(match[3].str());
+            int a = match[4].matched ? std::stoi(match[4].str()) : 255;
+
+            if (r > 255 || g > 255 || b > 255 || a > 255) return false;
+
+            outColor.r = static_cast<unsigned char>(r);
+            outColor.g = static_cast<unsigned char>(g);
+            outColor.b = static_cast<unsigned char>(b);
+            outColor.a = static_cast<unsigned char>(a);
+            return true;
+        } catch (...) {
+            return false;
+        }
     }
 
-    std::stringstream ss(clean);
-    std::string item;
-    std::vector<int> values;
-    while (std::getline(ss, item, ',')) {
-        try { values.push_back(std::stoi(item)); } catch (...) {}
-    }
+    return false;
+}
 
-    if (values.size() >= 3) {
-        color.r = static_cast<unsigned char>(values[0]);
-        color.g = static_cast<unsigned char>(values[1]);
-        color.b = static_cast<unsigned char>(values[2]);
-        color.a = (values.size() >= 4) ? static_cast<unsigned char>(values[3]) : 255;
-    }
-
-    return color;
+// Comprueba que un valor tipo String esté entre comillas dobles
+bool Parser::isValidStringFormat(const std::string& valStr) {
+    return valStr.length() >= 2 && valStr.front() == '"' && valStr.back() == '"';
 }
 
 std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
@@ -88,7 +100,6 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
         if (token.type == TokenType::NODE_TYPE) {
             std::shared_ptr<Node> currentNode = nullptr;
 
-            // Instanciación polimórfica según la jerarquía
             if (token.value == "Window") {
                 currentNode = std::make_shared<WindowNode>(token.value);
             } else if (token.value == "Space2D") {
@@ -99,10 +110,9 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
                 currentNode = std::make_shared<Node>(token.value);
             }
 
-            // Si el siguiente token es un NODE_NAME (ej: "main_window")
             if (i + 1 < tokens.size() && tokens[i + 1].type == TokenType::NODE_NAME) {
                 currentNode->name = tokens[i + 1].value;
-                i++; // Avanzamos el índice para saltar el NODE_NAME
+                i++;
             }
 
             // Procesar propiedades
@@ -111,7 +121,6 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
                 const auto& propToken = tokens[peek];
                 std::string propName = propToken.value;
 
-                // Validación 1: Verificar que empiece obligatoriamente por punto '.'
                 if (propName.empty() || propName.front() != '.') {
                     ErrorManager::logError(propToken.line, "Property declaration must start with '.' (got '" + propName + "')");
                     peek++;
@@ -120,54 +129,77 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
                 }
 
                 if (peek + 1 < tokens.size() && tokens[peek + 1].type == TokenType::VALUE) {
-                    std::string propValue = tokens[peek + 1].value;
+                    const auto& valToken = tokens[peek + 1];
+                    std::string propValue = valToken.value;
 
-                    // --- Propiedades de la clase base Node ---
+                    // --- Propiedad .name (String) ---
                     if (propName == ".name") {
-                        currentNode->name = propValue;
+                        if (isValidStringFormat(propValue)) {
+                            currentNode->name = propValue.substr(1, propValue.length() - 2);
+                        } else {
+                            ErrorManager::logError(valToken.line, "Type Mismatch: '.name' expects a string quoted with double quotes (e.g. \"my_name\")");
+                        }
                     } 
-                    // --- Propiedades de VisualNode (y derivados como Space2D, WindowNode) ---
+                    // --- Propiedad .position (Vector2D) ---
                     else if (propName == ".position") {
                         auto visualRef = std::dynamic_pointer_cast<VisualNode>(currentNode);
                         if (visualRef) {
-                            visualRef->position = parseVector2D(propValue);
+                            Vector2D vec;
+                            if (tryParseVector2D(propValue, vec)) {
+                                visualRef->position = vec;
+                            } else {
+                                ErrorManager::logError(valToken.line, "Type Mismatch: '.position' expects a Vector2D formatted as (x, y)");
+                            }
                         } else {
                             ErrorManager::logError(propToken.line, "Property '.position' is not supported by node type '" + token.value + "'");
                         }
                     }
-                    // --- Propiedades de Space2D (y derivados como WindowNode) ---
+                    // --- Propiedad .size (Vector2D) ---
                     else if (propName == ".size") {
                         auto spaceRef = std::dynamic_pointer_cast<Space2D>(currentNode);
                         if (spaceRef) {
-                            Vector2D vec = parseVector2D(propValue);
-                            spaceRef->size = {vec.x, vec.y};
+                            Vector2D vec;
+                            if (tryParseVector2D(propValue, vec)) {
+                                spaceRef->size = {vec.x, vec.y};
+                            } else {
+                                ErrorManager::logError(valToken.line, "Type Mismatch: '.size' expects formatted dimensions as (width, height)");
+                            }
                         } else {
                             ErrorManager::logError(propToken.line, "Property '.size' is not supported by node type '" + token.value + "'");
                         }
                     }
-                    // --- Propiedades exclusivas de WindowNode ---
+                    // --- Propiedad .title (String) ---
                     else if (propName == ".title") {
                         auto winRef = std::dynamic_pointer_cast<WindowNode>(currentNode);
                         if (winRef) {
-                            winRef->title = propValue;
+                            if (isValidStringFormat(propValue)) {
+                                winRef->title = propValue.substr(1, propValue.length() - 2);
+                            } else {
+                                ErrorManager::logError(valToken.line, "Type Mismatch: '.title' expects a string quoted with double quotes (e.g. \"My Title\")");
+                            }
                         } else {
                             ErrorManager::logError(propToken.line, "Property '.title' is not supported by node type '" + token.value + "'");
                         }
                     }
+                    // --- Propiedad .backgroundcolor (Color) ---
                     else if (propName == ".backgroundcolor") {
                         auto winRef = std::dynamic_pointer_cast<WindowNode>(currentNode);
                         if (winRef) {
-                            winRef->backgroundColor = parseColor(propValue);
+                            Color color;
+                            if (tryParseColor(propValue, color)) {
+                                winRef->backgroundColor = color;
+                            } else {
+                                ErrorManager::logError(valToken.line, "Type Mismatch: '.backgroundcolor' expects a Color in #HEX or (r, g, b, a) format");
+                            }
                         } else {
                             ErrorManager::logError(propToken.line, "Property '.backgroundcolor' is not supported by node type '" + token.value + "'");
                         }
                     }
-                    // --- Caso: Nombre de propiedad no reconocido ---
                     else {
                         ErrorManager::logError(propToken.line, "Unknown property '" + propName + "' for node type '" + token.value + "'");
                     }
 
-                    peek += 2; // Avanzar propiedad y valor
+                    peek += 2;
                 } else {
                     ErrorManager::logError(propToken.line, "Property '" + propName + "' missing value.");
                     peek++;
@@ -176,7 +208,6 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
 
             i = peek - 1;
 
-            // Construcción del Árbol de Jerarquía
             if (!root) {
                 root = currentNode;
                 nodeStack.push({token.indentLevel, currentNode});

@@ -13,8 +13,9 @@
 
 class Parser {
 private:
-    static Vector2D parseVector2D(const std::string& valStr);
-    static Color parseColor(const std::string& valStr);
+    static bool tryParseVector2D(const std::string& valStr, Vector2D& outVec);
+    static bool tryParseColor(const std::string& valStr, Color& outColor);
+    static bool isValidStringFormat(const std::string& valStr);
 
 public:
     static std::shared_ptr<Node> parse(const std::vector<Token>& tokens);
