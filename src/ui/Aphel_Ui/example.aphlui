@@ -1,9 +1,11 @@
-#ejemplo
-Window:
-    .title: "titulo"
-    .size: (20,2)
-    .backgroundcolor: (0,0,0,40)
-    .position: (0,1)
-    Node:
-        .name: "nodo"
+# Comentario del archivo de interfaz
+Node:
+    .name: "ventana_principal"
+    
+    Space2D:
+        .name: "contenedor_secundario"
+        .size: (800, 600)
         
+        VisualNode:
+            .name: "panel_transparente"
+            .position: (10, 10)

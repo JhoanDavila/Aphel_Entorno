@@ -10,7 +10,7 @@ struct Color {
     unsigned char b = 255;
     unsigned char a = 255; // Soporte para transparencia (0 = invisible, 255 = opaco)
 
-    // Útil para cuando le pasemos datos a la GPU (OpenGL usa floats de 0.0f a 1.0f)
+    // Útil para pasar datos a la GPU (OpenGL usa floats de 0.0f a 1.0f)
     float rFloat() const { return r / 255.0f; }
     float gFloat() const { return g / 255.0f; }
     float bFloat() const { return b / 255.0f; }
@@ -22,7 +22,10 @@ public:
     std::string title;
     Color backgroundColor;
 
-    explicit WindowNode(const std::string& nodeName, Node* parentNode = nullptr);
+    // Acepta el tipo (por defecto "Window"), el nombre y el nodo padre
+    explicit WindowNode(const std::string& nodeType = "Window", 
+                        const std::string& nodeName = "", 
+                        Node* parentNode = nullptr);
 };
 
 #endif // WINDOW_NODE_H

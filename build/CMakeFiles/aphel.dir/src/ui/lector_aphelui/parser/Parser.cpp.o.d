@@ -211,4 +211,6 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o: \
  /usr/include/c++/13/bits/regex_compiler.tcc \
  /usr/include/c++/13/bits/regex.h /usr/include/c++/13/bits/regex.tcc \
  /usr/include/c++/13/bits/regex_executor.h \
- /usr/include/c++/13/bits/regex_executor.tcc
+ /usr/include/c++/13/bits/regex_executor.tcc \
+ /usr/include/c++/13/algorithm \
+ /usr/include/c++/13/pstl/glue_algorithm_defs.h

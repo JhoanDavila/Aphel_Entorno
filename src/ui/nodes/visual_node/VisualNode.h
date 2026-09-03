@@ -12,8 +12,10 @@ class VisualNode : public Node {
 public:
     Vector2D position;
 
-    // Hereda los constructores del Node base
-    explicit VisualNode(const std::string& nodeName, Node* parentNode = nullptr);
+    // Acepta el tipo de nodo (por defecto "VisualNode") y lo pasa al nodo base
+    explicit VisualNode(const std::string& nodeType = "VisualNode", 
+                        const std::string& nodeName = "", 
+                        Node* parentNode = nullptr);
 };
 
 #endif // VISUAL_NODE_H

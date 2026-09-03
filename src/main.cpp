@@ -17,25 +17,28 @@ void printTree(const std::shared_ptr<Node>& node, int depth = 0) {
     auto visualRef = std::dynamic_pointer_cast<VisualNode>(node);
 
     if (winRef) {
-        std::cout << indent << "- Window [Name: \"" << winRef->name 
+        std::cout << indent << "- " << winRef->getType() << " [Name: \"" << winRef->name 
                   << "\", Title: \"" << winRef->title << "\""
                   << ", Pos: (" << winRef->position.x << ", " << winRef->position.y << ")"
                   << ", Size: (" << winRef->size.width << ", " << winRef->size.height << ")"
-                  << ", BgColor: RGB(" << (int)winRef->backgroundColor.r << ", " 
-                                       << (int)winRef->backgroundColor.g << ", " 
-                                       << (int)winRef->backgroundColor.b << ")]" << std::endl;
+                  // Muestra los 4 canales incluyendo la Transparencia/Alfa
+                  << ", BgColor: RGBA(" << (int)winRef->backgroundColor.r << ", " 
+                                        << (int)winRef->backgroundColor.g << ", " 
+                                        << (int)winRef->backgroundColor.b << ", " 
+                                        << (int)winRef->backgroundColor.a << ")]" << std::endl;
     }
     else if (spaceRef) {
-        std::cout << indent << "- 2DSpace [Name: \"" << spaceRef->name 
+        std::cout << indent << "- " << spaceRef->getType() << " [Name: \"" << spaceRef->name 
                   << "\", Pos: (" << spaceRef->position.x << ", " << spaceRef->position.y << ")"
                   << ", Size: (" << spaceRef->size.width << ", " << spaceRef->size.height << ")]" << std::endl;
     } 
     else if (visualRef) {
-        std::cout << indent << "- VisualNode [Name: \"" << visualRef->name 
+        std::cout << indent << "- " << visualRef->getType() << " [Name: \"" << visualRef->name 
                   << "\", Pos: (" << visualRef->position.x << ", " << visualRef->position.y << ")]" << std::endl;
     } 
     else {
-        std::cout << indent << "- Node [Name: \"" << node->name << "\"]" << std::endl;
+        // Imprime dinámicamente el tipo genérico cargado
+        std::cout << indent << "- " << node->getType() << " [Name: \"" << node->name << "\"]" << std::endl;
     }
 
     for (const auto& child : node->children) {
@@ -49,7 +52,6 @@ int main(int argc, char* argv[]) {
 
     std::cout << "=== APHEL ENGINE v0.0.0.8 ===" << std::endl;
 
-    // Una sola línea invoca todo el proceso de carga
     std::shared_ptr<Node> root = AphluiReader::loadFromFile(filePath);
 
     if (root) {

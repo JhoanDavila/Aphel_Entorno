@@ -570,6 +570,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o: /home/jhoan/pers
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
   /usr/include/asm-generic/errno.h \
+  /usr/include/c++/13/algorithm \
   /usr/include/c++/13/backward/auto_ptr.h \
   /usr/include/c++/13/backward/binders.h \
   /usr/include/c++/13/bit \
@@ -699,6 +700,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o: /home/jhoan/pers
   /usr/include/c++/13/new \
   /usr/include/c++/13/ostream \
   /usr/include/c++/13/pstl/execution_defs.h \
+  /usr/include/c++/13/pstl/glue_algorithm_defs.h \
   /usr/include/c++/13/pstl/glue_memory_defs.h \
   /usr/include/c++/13/pstl/pstl_config.h \
   /usr/include/c++/13/regex \
@@ -2022,8 +2024,6 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 
 /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.cpp:
 
-/usr/include/c++/13/pstl/glue_algorithm_defs.h:
-
 /usr/include/c++/13/bits/unordered_set.h:
 
 /usr/include/c++/13/bits/hashtable_policy.h:
@@ -2031,8 +2031,6 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 /usr/include/c++/13/bits/erase_if.h:
 
 /usr/include/c++/13/bits/enable_special_members.h:
-
-/usr/include/c++/13/algorithm:
 
 /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp:
 
@@ -2095,6 +2093,8 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 /usr/include/x86_64-linux-gnu/bits/types/sigset_t.h:
 
 /usr/include/c++/13/ext/concurrence.h:
+
+/usr/include/c++/13/pstl/glue_algorithm_defs.h:
 
 /usr/include/c++/13/cctype:
 
@@ -2197,6 +2197,10 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 /usr/include/c++/13/bits/stl_bvector.h:
 
 /usr/include/c++/13/bits/allocator.h:
+
+/usr/include/c++/13/regex:
+
+/usr/include/c++/13/bits/stl_algobase.h:
 
 /usr/include/c++/13/bits/exception.h:
 
@@ -2466,6 +2470,10 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 
 /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h:
 
+/usr/include/c++/13/sstream:
+
+/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
+
 /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
@@ -2528,6 +2536,8 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 
 /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Token.h:
 
+/usr/include/c++/13/algorithm:
+
 /usr/include/c++/13/bits/istream.tcc:
 
 /usr/include/c++/13/bits/locale_conv.h:
@@ -2569,11 +2579,3 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 /usr/include/c++/13/ctime:
 
 /usr/include/c++/13/deque:
-
-/usr/include/c++/13/bits/stl_algobase.h:
-
-/usr/include/c++/13/regex:
-
-/usr/include/x86_64-linux-gnu/bits/types/cookie_io_functions_t.h:
-
-/usr/include/c++/13/sstream:

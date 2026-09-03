@@ -12,12 +12,12 @@
 #include <string>
 
 class Parser {
-private:
+public:
+    // Métodos auxiliares hechos públicos para funciones internas del archivo .cpp
     static bool tryParseVector2D(const std::string& valStr, Vector2D& outVec);
-    static bool tryParseColor(const std::string& valStr, Color& outColor);
+    static bool tryParseColor(const std::string& valStr, Color& outColor, int line);
     static bool isValidStringFormat(const std::string& valStr);
 
-public:
     static std::shared_ptr<Node> parse(const std::vector<Token>& tokens);
 };
 

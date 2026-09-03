@@ -6,15 +6,22 @@
 #include <memory>
 
 class Node {
+protected:
+    std::string type;
+
 public:
     std::string name;
     Node* parent;
     std::vector<std::shared_ptr<Node>> children;
 
-    // Destructor virtual necesario para habilitar el polimorfismo y dynamic_pointer_cast
+    // Constructores: permiten inicializar tanto el nombre como el tipo de nodo
+    explicit Node(const std::string& nodeType, const std::string& nodeName = "", Node* parentNode = nullptr);
+
+    // Destructor virtual necesario para el polimorfismo y RTTI
     virtual ~Node() = default;
 
-    explicit Node(const std::string& nodeName, Node* parentNode = nullptr);
+    // Getter del tipo de nodo (satisface la llamada node->getType())
+    std::string getType() const { return type; }
 
     void addChild(std::shared_ptr<Node> child);
 };
