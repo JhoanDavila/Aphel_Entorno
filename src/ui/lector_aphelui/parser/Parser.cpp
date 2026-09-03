@@ -20,11 +20,41 @@ Vector2D Parser::parseVector2D(const std::string& valStr) {
     return vec;
 }
 
-ColorRGB Parser::parseColorRGB(const std::string& valStr) {
-    ColorRGB color{0, 0, 0};
+Color Parser::parseColor(const std::string& valStr) {
+    Color color{0, 0, 0, 255};
     std::string clean = valStr;
-    
-    // Remover "RGB(" y ")"
+
+    // 1. Formato Hexadecimal (#RRGGBB o #RRGGBBAA o #RGB)
+    if (!clean.empty() && clean.front() == '#') {
+        clean.erase(0, 1);
+        
+        // Soporte formato corto #RGB -> #RRGGBB
+        if (clean.length() == 3) {
+            std::string expanded;
+            for (char c : clean) { expanded += c; expanded += c; }
+            clean = expanded;
+        }
+
+        try {
+            unsigned int hexVal = std::stoul(clean, nullptr, 16);
+            if (clean.length() == 6) {
+                color.r = (hexVal >> 16) & 0xFF;
+                color.g = (hexVal >> 8) & 0xFF;
+                color.b = hexVal & 0xFF;
+                color.a = 255;
+            } else if (clean.length() == 8) {
+                color.r = (hexVal >> 24) & 0xFF;
+                color.g = (hexVal >> 16) & 0xFF;
+                color.b = (hexVal >> 8) & 0xFF;
+                color.a = hexVal & 0xFF;
+            }
+        } catch (...) {
+            // Si el Hex está mal formado, el ErrorManager lo atrapará
+        }
+        return color;
+    }
+
+    // 2. Formato RGB(r,g,b) o RGBA(r,g,b,a)
     size_t start = clean.find('(');
     size_t end = clean.find(')');
     if (start != std::string::npos && end != std::string::npos && end > start) {
@@ -32,14 +62,19 @@ ColorRGB Parser::parseColorRGB(const std::string& valStr) {
     }
 
     std::stringstream ss(clean);
-    std::string rStr, gStr, bStr;
-    if (std::getline(ss, rStr, ',') && std::getline(ss, gStr, ',') && std::getline(ss, bStr, ',')) {
-        try {
-            color.r = static_cast<unsigned char>(std::stoi(rStr));
-            color.g = static_cast<unsigned char>(std::stoi(gStr));
-            color.b = static_cast<unsigned char>(std::stoi(bStr));
-        } catch (...) {}
+    std::string item;
+    std::vector<int> values;
+    while (std::getline(ss, item, ',')) {
+        try { values.push_back(std::stoi(item)); } catch (...) {}
     }
+
+    if (values.size() >= 3) {
+        color.r = static_cast<unsigned char>(values[0]);
+        color.g = static_cast<unsigned char>(values[1]);
+        color.b = static_cast<unsigned char>(values[2]);
+        color.a = (values.size() >= 4) ? static_cast<unsigned char>(values[3]) : 255;
+    }
+
     return color;
 }
 
@@ -94,7 +129,7 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
                     }
                     else if (propName == ".backgroundcolor") {
                         auto winRef = std::dynamic_pointer_cast<WindowNode>(currentNode);
-                        if (winRef) winRef->backgroundColor = parseColorRGB(propValue);
+                        if (winRef) winRef->backgroundColor = parseColor(propValue);
                     }
 
                     peek += 2;
