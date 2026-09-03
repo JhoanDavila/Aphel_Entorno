@@ -4,16 +4,18 @@
 #include <string>
 
 enum class TokenType {
-    NODE_TYPE,  // Para tipos de nodo (ej. "Node", "Button")
-    PROPERTY,   // Para atributos que inician con punto (ej. ".name")
-    VALUE,      // Para el valor entre comillas o texto (ej. "nodo_1")
-    UNKNOWN
+    NODE_TYPE,    // p. ej. "Window", "VisualNode"
+    NODE_NAME,    // p. ej. "main_window"
+    PROPERTY,     // p. ej. ".position"
+    VALUE,        // p. ej. "(100, 200)"
+    UNKNOWN       // Basura o sintaxis no reconocida
 };
 
 struct Token {
     TokenType type;
     std::string value;
-    int indentLevel; // Guardamos los espacios al inicio para la v0.0.0.5
+    int line;         // Número de línea para el ErrorManager
+    int indentLevel;  // Espacios de sangría para la jerarquía del Parser
 };
 
 #endif // TOKEN_H

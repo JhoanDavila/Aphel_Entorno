@@ -1,17 +1,1 @@
-# comentario con numeral
-# ahora es una ventana el nodo padre
-Window:
-    .name: "ventana_principal"
-    .position: (0,0)
-    .size: (1260,630)
-    .title: "App_X"
-    .backgroundcolor: RGB(0,0,0)
-    2DSpace:
-        .name: "contenedor 2d"
-        .position: (0,0)
-        .size: (1200, 600)
-        Node:
-            .name: "nodo_1"
-            VisualNode:
-                .name: "nodo visual 1"
-                .position: (120,300)
+#ejemplo

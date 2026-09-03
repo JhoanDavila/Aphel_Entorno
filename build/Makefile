@@ -177,6 +177,30 @@ src/ui/lector_aphelui/cleaner/Cleaner.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.s
 .PHONY : src/ui/lector_aphelui/cleaner/Cleaner.cpp.s
 
+src/ui/lector_aphelui/error_manager/ErrorManager.o: src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o
+.PHONY : src/ui/lector_aphelui/error_manager/ErrorManager.o
+
+# target to build an object file
+src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o
+.PHONY : src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o
+
+src/ui/lector_aphelui/error_manager/ErrorManager.i: src/ui/lector_aphelui/error_manager/ErrorManager.cpp.i
+.PHONY : src/ui/lector_aphelui/error_manager/ErrorManager.i
+
+# target to preprocess a source file
+src/ui/lector_aphelui/error_manager/ErrorManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.i
+.PHONY : src/ui/lector_aphelui/error_manager/ErrorManager.cpp.i
+
+src/ui/lector_aphelui/error_manager/ErrorManager.s: src/ui/lector_aphelui/error_manager/ErrorManager.cpp.s
+.PHONY : src/ui/lector_aphelui/error_manager/ErrorManager.s
+
+# target to generate assembly for a file
+src/ui/lector_aphelui/error_manager/ErrorManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.s
+.PHONY : src/ui/lector_aphelui/error_manager/ErrorManager.cpp.s
+
 src/ui/lector_aphelui/parser/Parser.o: src/ui/lector_aphelui/parser/Parser.cpp.o
 .PHONY : src/ui/lector_aphelui/parser/Parser.o
 
@@ -360,6 +384,9 @@ help:
 	@echo "... src/ui/lector_aphelui/cleaner/Cleaner.o"
 	@echo "... src/ui/lector_aphelui/cleaner/Cleaner.i"
 	@echo "... src/ui/lector_aphelui/cleaner/Cleaner.s"
+	@echo "... src/ui/lector_aphelui/error_manager/ErrorManager.o"
+	@echo "... src/ui/lector_aphelui/error_manager/ErrorManager.i"
+	@echo "... src/ui/lector_aphelui/error_manager/ErrorManager.s"
 	@echo "... src/ui/lector_aphelui/parser/Parser.o"
 	@echo "... src/ui/lector_aphelui/parser/Parser.i"
 	@echo "... src/ui/lector_aphelui/parser/Parser.s"

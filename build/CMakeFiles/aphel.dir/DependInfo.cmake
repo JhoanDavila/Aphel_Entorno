@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/main.cpp" "CMakeFiles/aphel.dir/src/main.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/main.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/cleaner/Cleaner.cpp" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o.d"
+  "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/error_manager/ErrorManager.cpp" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.cpp" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/reader/AphluiReader.cpp" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o.d"

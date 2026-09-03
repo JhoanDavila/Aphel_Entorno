@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(AphelEngine VERSION 0.0.0.7 LANGUAGES CXX)
+project(AphelEngine VERSION 0.0.0.8 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -16,6 +16,7 @@ file(GLOB_RECURSE SOURCES
     "src/ui/lector_aphelui/tokenizer/*.cpp"
     "src/ui/lector_aphelui/parser/*.cpp"
     "src/ui/lector_aphelui/reader/*.cpp"
+    "src/ui/lector_aphelui/error_manager/*.cpp"
 )
 
 add_executable(aphel ${SOURCES})

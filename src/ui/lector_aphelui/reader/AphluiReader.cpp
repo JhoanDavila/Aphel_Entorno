@@ -2,15 +2,20 @@
 #include "ui/lector_aphelui/cleaner/Cleaner.h"
 #include "ui/lector_aphelui/tokenizer/Tokenizer.h"
 #include "ui/lector_aphelui/parser/Parser.h"
+#include "ui/lector_aphelui/error_manager/ErrorManager.h"
 
 #include <fstream>
 #include <iostream>
 #include <vector>
 
 std::shared_ptr<Node> AphluiReader::loadFromFile(const std::string& filePath) {
+    // 1. Reiniciar el registro de errores de ejecuciones previas
+    ErrorManager::clear();
+
     std::ifstream file(filePath);
     if (!file.is_open()) {
-        std::cerr << "[AphluiReader Error] No se pudo abrir el archivo: " << filePath << std::endl;
+        ErrorManager::logError(0, "Could not open file: " + filePath);
+        ErrorManager::printErrors();
         return nullptr;
     }
 
@@ -21,9 +26,28 @@ std::shared_ptr<Node> AphluiReader::loadFromFile(const std::string& filePath) {
     }
     file.close();
 
-    // Pipeline interno de lectura y parsing
+    // 2. Limpieza de comentarios y líneas vacías
     std::vector<std::string> cleanLines = Cleaner::removeCommentsAndEmptyLines(rawLines);
+
+    // 3. Tokenización y validación de sintaxis
     std::vector<Token> tokens = Tokenizer::tokenize(cleanLines);
-    
-    return Parser::parse(tokens);
+
+    // Si el Tokenizer encontró caracteres no válidos o sintaxis errónea, frenamos
+    if (ErrorManager::hasErrors()) {
+        std::cerr << "[AphluiReader] Build aborted due to syntax errors." << std::endl;
+        ErrorManager::printErrors();
+        return nullptr;
+    }
+
+    // 4. Generación del árbol de nodos
+    std::shared_ptr<Node> root = Parser::parse(tokens);
+
+    // Si el Parser generó algún error durante la construcción
+    if (ErrorManager::hasErrors()) {
+        std::cerr << "[AphluiReader] Build aborted due to parsing errors." << std::endl;
+        ErrorManager::printErrors();
+        return nullptr;
+    }
+
+    return root;
 }

@@ -97,10 +97,24 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/cleaner/Cleaner.cpp -o CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.s
 
+CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o: CMakeFiles/aphel.dir/flags.make
+CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/error_manager/ErrorManager.cpp
+CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o -MF CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/error_manager/ErrorManager.cpp
+
+CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/error_manager/ErrorManager.cpp > CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.i
+
+CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/error_manager/ErrorManager.cpp -o CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.s
+
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o: CMakeFiles/aphel.dir/flags.make
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.cpp
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o -MF CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.cpp
 
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.i: cmake_force
@@ -114,7 +128,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.s: cmake_force
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o: CMakeFiles/aphel.dir/flags.make
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/reader/AphluiReader.cpp
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o -MF CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/reader/AphluiReader.cpp
 
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.i: cmake_force
@@ -128,7 +142,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.s: cmake_forc
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o: CMakeFiles/aphel.dir/flags.make
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o -MF CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp
 
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.i: cmake_force
@@ -142,7 +156,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.s: cmake_forc
 CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o: CMakeFiles/aphel.dir/flags.make
 CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.cpp
 CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o -MF CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.cpp
 
 CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.i: cmake_force
@@ -156,7 +170,7 @@ CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.s: cmake_force
 CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o: CMakeFiles/aphel.dir/flags.make
 CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.cpp
 CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o -MF CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.cpp
 
 CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.i: cmake_force
@@ -170,7 +184,7 @@ CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.s: cmake_force
 CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: CMakeFiles/aphel.dir/flags.make
 CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.cpp
 CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o -MF CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.cpp
 
 CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.i: cmake_force
@@ -184,7 +198,7 @@ CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.s: cmake_force
 CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: CMakeFiles/aphel.dir/flags.make
 CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.cpp
 CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o -MF CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.cpp
 
 CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.i: cmake_force
@@ -199,6 +213,7 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.s: cmake_force
 aphel_OBJECTS = \
 "CMakeFiles/aphel.dir/src/main.cpp.o" \
 "CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o" \
+"CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o" \
 "CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o" \
 "CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o" \
 "CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o" \
@@ -212,6 +227,7 @@ aphel_EXTERNAL_OBJECTS =
 
 aphel: CMakeFiles/aphel.dir/src/main.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o
+aphel: CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o
@@ -221,7 +237,7 @@ aphel: CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o
 aphel: CMakeFiles/aphel.dir/build.make
 aphel: CMakeFiles/aphel.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable aphel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable aphel"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aphel.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

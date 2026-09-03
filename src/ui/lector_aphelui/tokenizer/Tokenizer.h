@@ -1,13 +1,13 @@
 #ifndef TOKENIZER_H
 #define TOKENIZER_H
 
-#include "Token.h"
+#include "ui/lector_aphelui/tokenizer/Token.h"
 #include <string>
 #include <vector>
 
 class Tokenizer {
 public:
-    // Convierte el vector de líneas limpias en una lista plana de Tokens
+    // Convierte las líneas limpias en una lista plana de Tokens con información de línea e indentación
     static std::vector<Token> tokenize(const std::vector<std::string>& cleanLines);
 };
 
