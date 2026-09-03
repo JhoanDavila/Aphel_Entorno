@@ -14,11 +14,33 @@ Vector2D Parser::parseVector2D(const std::string& valStr) {
             vec.x = std::stoi(clean.substr(0, commaPos));
             vec.y = std::stoi(clean.substr(commaPos + 1));
         } catch (...) {
-            vec.x = 0;
-            vec.y = 0;
+            vec.x = 0; vec.y = 0;
         }
     }
     return vec;
+}
+
+ColorRGB Parser::parseColorRGB(const std::string& valStr) {
+    ColorRGB color{0, 0, 0};
+    std::string clean = valStr;
+    
+    // Remover "RGB(" y ")"
+    size_t start = clean.find('(');
+    size_t end = clean.find(')');
+    if (start != std::string::npos && end != std::string::npos && end > start) {
+        clean = clean.substr(start + 1, end - start - 1);
+    }
+
+    std::stringstream ss(clean);
+    std::string rStr, gStr, bStr;
+    if (std::getline(ss, rStr, ',') && std::getline(ss, gStr, ',') && std::getline(ss, bStr, ',')) {
+        try {
+            color.r = static_cast<unsigned char>(std::stoi(rStr));
+            color.g = static_cast<unsigned char>(std::stoi(gStr));
+            color.b = static_cast<unsigned char>(std::stoi(bStr));
+        } catch (...) {}
+    }
+    return color;
 }
 
 std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
@@ -33,8 +55,10 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
         if (token.type == TokenType::NODE_TYPE) {
             std::shared_ptr<Node> currentNode = nullptr;
 
-            // 1. Instanciación Polimórfica según la jerarquía
-            if (token.value == "2DSpace") {
+            // Instanciación polimórfica según la jerarquía
+            if (token.value == "Window") {
+                currentNode = std::make_shared<WindowNode>(token.value);
+            } else if (token.value == "2DSpace") {
                 currentNode = std::make_shared<Space2D>(token.value);
             } else if (token.value == "VisualNode") {
                 currentNode = std::make_shared<VisualNode>(token.value);
@@ -42,7 +66,7 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
                 currentNode = std::make_shared<Node>(token.value);
             }
 
-            // 2. Procesar dinámicamente todas las propiedades asociadas a este nodo
+            // Procesar propiedades
             size_t peek = i + 1;
             while (peek < tokens.size() && tokens[peek].type == TokenType::PROPERTY) {
                 std::string propName = tokens[peek].value;
@@ -50,24 +74,27 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
                 if (peek + 1 < tokens.size() && tokens[peek + 1].type == TokenType::VALUE) {
                     std::string propValue = tokens[peek + 1].value;
 
-                    // Asignación de .name
                     if (propName == ".name") {
                         currentNode->name = propValue;
                     } 
-                    // Asignación de .position (Aplica a VisualNode y Space2D por herencia)
                     else if (propName == ".position") {
                         auto visualRef = std::dynamic_pointer_cast<VisualNode>(currentNode);
-                        if (visualRef) {
-                            visualRef->position = parseVector2D(propValue);
-                        }
+                        if (visualRef) visualRef->position = parseVector2D(propValue);
                     }
-                    // Asignación de .size (Específico de Space2D)
                     else if (propName == ".size") {
                         auto spaceRef = std::dynamic_pointer_cast<Space2D>(currentNode);
                         if (spaceRef) {
-                            Vector2D parsedSize = parseVector2D(propValue);
-                            spaceRef->size = {parsedSize.x, parsedSize.y};
+                            Vector2D vec = parseVector2D(propValue);
+                            spaceRef->size = {vec.x, vec.y};
                         }
+                    }
+                    else if (propName == ".title") {
+                        auto winRef = std::dynamic_pointer_cast<WindowNode>(currentNode);
+                        if (winRef) winRef->title = propValue;
+                    }
+                    else if (propName == ".backgroundcolor") {
+                        auto winRef = std::dynamic_pointer_cast<WindowNode>(currentNode);
+                        if (winRef) winRef->backgroundColor = parseColorRGB(propValue);
                     }
 
                     peek += 2;
@@ -78,7 +105,6 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
 
             i = peek - 1;
 
-            // 3. Ubicación del nodo dentro del árbol jerárquico
             if (!root) {
                 root = currentNode;
                 nodeStack.push({token.indentLevel, currentNode});

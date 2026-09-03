@@ -15,6 +15,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.cpp" "CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.cpp" "CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.cpp" "CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o.d"
+  "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.cpp" "CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

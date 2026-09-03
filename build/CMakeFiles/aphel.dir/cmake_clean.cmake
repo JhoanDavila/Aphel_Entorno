@@ -13,6 +13,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o.d"
   "CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o"
   "CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o.d"
+  "CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o"
+  "CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o.d"
   "aphel"
   "aphel.pdb"
 )

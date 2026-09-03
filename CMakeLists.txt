@@ -11,6 +11,7 @@ file(GLOB_RECURSE SOURCES
     "src/ui/nodes/node/*.cpp"
     "src/ui/nodes/visual_node/*.cpp"
     "src/ui/nodes/2dspace/*.cpp"
+    "src/ui/nodes/window/*.cpp"
     "src/ui/lector_aphelui/cleaner/*.cpp"
     "src/ui/lector_aphelui/tokenizer/*.cpp"
     "src/ui/lector_aphelui/parser/*.cpp"

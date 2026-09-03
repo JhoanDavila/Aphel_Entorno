@@ -181,10 +181,12 @@ CMakeFiles/aphel.dir/src/main.cpp.o: \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/../node/Node.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/cleaner/Cleaner.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Token.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Token.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.h \
- /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.h
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.h

@@ -7,6 +7,7 @@
 #include "ui/nodes/node/Node.h"
 #include "ui/nodes/visual_node/VisualNode.h"
 #include "ui/nodes/2dspace/2DSpace.h"
+#include "ui/nodes/window/Window.h"
 #include "ui/lector_aphelui/cleaner/Cleaner.h"
 #include "ui/lector_aphelui/tokenizer/Tokenizer.h"
 #include "ui/lector_aphelui/parser/Parser.h"
@@ -16,11 +17,21 @@ void printTree(const std::shared_ptr<Node>& node, int depth = 0) {
 
     std::string indent(depth * 4, ' ');
 
-    // Evaluación en orden de jerarquía (del más derivado al base)
+    // Evaluación en orden de jerarquía (de la clase más derivada a la base)
+    auto winRef = std::dynamic_pointer_cast<WindowNode>(node);
     auto spaceRef = std::dynamic_pointer_cast<Space2D>(node);
     auto visualRef = std::dynamic_pointer_cast<VisualNode>(node);
 
-    if (spaceRef) {
+    if (winRef) {
+        std::cout << indent << "- Window [Name: \"" << winRef->name 
+                  << "\", Title: \"" << winRef->title << "\""
+                  << ", Pos: (" << winRef->position.x << ", " << winRef->position.y << ")"
+                  << ", Size: (" << winRef->size.width << ", " << winRef->size.height << ")"
+                  << ", BgColor: RGB(" << (int)winRef->backgroundColor.r << ", " 
+                                       << (int)winRef->backgroundColor.g << ", " 
+                                       << (int)winRef->backgroundColor.b << ")]" << std::endl;
+    }
+    else if (spaceRef) {
         std::cout << indent << "- 2DSpace [Name: \"" << spaceRef->name 
                   << "\", Pos: (" << spaceRef->position.x << ", " << spaceRef->position.y << ")"
                   << ", Size: (" << spaceRef->size.width << ", " << spaceRef->size.height << ")]" << std::endl;
@@ -42,7 +53,7 @@ int main(int argc, char* argv[]) {
     std::string filePath = "../src/ui/Aphel_Ui/example.aphlui";
     if (argc > 1) filePath = argv[1];
 
-    std::cout << "=== APHEL ENGINE v0.0.0.7 ===" << std::endl;
+    std::cout << "=== APHEL ENGINE v0.0.0.8 ===" << std::endl;
 
     std::ifstream file(filePath);
     if (!file.is_open()) {
