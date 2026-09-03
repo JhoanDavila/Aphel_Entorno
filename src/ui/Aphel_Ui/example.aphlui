@@ -1,2 +1,5 @@
 #ejemplo
 Window:
+    .title: "titulo"
+    Node:
+        

@@ -163,6 +163,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o: \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/../node/Node.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/error_manager/ErrorManager.h \
  /usr/include/c++/13/stack /usr/include/c++/13/deque \
  /usr/include/c++/13/bits/stl_deque.h /usr/include/c++/13/bits/deque.tcc \
  /usr/include/c++/13/bits/stl_stack.h /usr/include/c++/13/sstream \
