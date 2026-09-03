@@ -1,0 +1,10 @@
+# comentario con numeral
+# asi se sentencia un nodo:
+Node:
+    .name: "nodo_1"
+    Node:
+        .name: "nodo_1_1"
+    Node:
+        .name: "nodo_1_2"
+        Node:
+            .name: "nodo_1_2_1"
