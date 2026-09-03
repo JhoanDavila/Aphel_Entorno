@@ -1,12 +1,13 @@
 #include "ui/lector_aphelui/tokenizer/Tokenizer.h"
 #include "ui/lector_aphelui/error_manager/ErrorManager.h"
 #include <algorithm>
+#include <sstream>
 #include <unordered_set>
 
 std::vector<Token> Tokenizer::tokenize(const std::vector<std::string>& cleanLines) {
     std::vector<Token> tokens;
 
-    // Lista de nodos válidos que reconoce el motor
+    // Lista de tipos de nodos reconocidos por AphelEngine
     static const std::unordered_set<std::string> validNodeTypes = {
         "Node", "VisualNode", "Space2D", "Window"
     };
@@ -14,7 +15,7 @@ std::vector<Token> Tokenizer::tokenize(const std::vector<std::string>& cleanLine
     int lineNumber = 0;
 
     for (const auto& line : cleanLines) {
-        lineNumber++; // Incrementamos contador de línea
+        lineNumber++;
         
         size_t firstNonSpace = line.find_first_not_of(" \t");
         if (firstNonSpace == std::string::npos) continue;
@@ -26,15 +27,15 @@ std::vector<Token> Tokenizer::tokenize(const std::vector<std::string>& cleanLine
         if (trimmedLine[0] == '.') {
             size_t colonPos = trimmedLine.find(':');
             
-            // Error: Es un atributo pero le falta los dos puntos ':'
+            // Error: Atributo sin ':'
             if (colonPos == std::string::npos) {
                 ErrorManager::logError(lineNumber, "Missing ':' in property declaration: '" + trimmedLine + "'");
-                tokens.push_back({TokenType::UNKNOWN, trimmedLine, lineNumber});
+                tokens.push_back({TokenType::UNKNOWN, trimmedLine, lineNumber, indent});
                 continue;
             }
 
             std::string propName = trimmedLine.substr(0, colonPos);
-            tokens.push_back({TokenType::PROPERTY, propName, lineNumber});
+            tokens.push_back({TokenType::PROPERTY, propName, lineNumber, indent});
 
             std::string rawVal = trimmedLine.substr(colonPos + 1);
             size_t valStart = rawVal.find_first_not_of(" \t");
@@ -48,37 +49,43 @@ std::vector<Token> Tokenizer::tokenize(const std::vector<std::string>& cleanLine
                     cleanVal = cleanVal.substr(1, cleanVal.length() - 2);
                 }
 
-                tokens.push_back({TokenType::VALUE, cleanVal, lineNumber});
+                tokens.push_back({TokenType::VALUE, cleanVal, lineNumber, indent});
             } else {
-                // Error: Propiedad sin valor asignado (.title:)
                 ErrorManager::logError(lineNumber, "Property '" + propName + "' has no value assigned.");
             }
         } 
-        // 2. Caso Definición de Nodo (Window:, VisualNode:, etc.)
+        // 2. Caso Definición de Nodo (Window:, VisualNode main_node:, etc.)
         else {
             size_t colonPos = trimmedLine.find(':');
             
-            // Error: No empieza por '.' y no tiene ':', es texto suelto/basura
+            // Error: No empieza por '.' y no tiene ':', es sintaxis no válida
             if (colonPos == std::string::npos) {
                 ErrorManager::logError(lineNumber, "Unrecognized syntax or missing ':' in statement: '" + trimmedLine + "'");
-                tokens.push_back({TokenType::UNKNOWN, trimmedLine, lineNumber});
+                tokens.push_back({TokenType::UNKNOWN, trimmedLine, lineNumber, indent});
                 continue;
             }
 
-            std::string nodeType = trimmedLine.substr(0, colonPos);
-            size_t typeEnd = nodeType.find_last_not_of(" \t");
-            if (typeEnd != std::string::npos) {
-                nodeType = nodeType.substr(0, typeEnd + 1);
-            }
+            std::string header = trimmedLine.substr(0, colonPos);
+            std::stringstream ss(header);
+            std::string nodeType, nodeName;
 
-            // Error: El tipo de nodo no existe en el motor (ej. "BotonDesconocido:")
+            ss >> nodeType; // Extrae la primera palabra (Tipo)
+            ss >> nodeName; // Extrae la segunda palabra opcional (Nombre)
+
+            // Validación: ¿El tipo de nodo existe en AphelEngine?
             if (validNodeTypes.find(nodeType) == validNodeTypes.end()) {
                 ErrorManager::logError(lineNumber, "Unknown Node type: '" + nodeType + "'");
-                tokens.push_back({TokenType::UNKNOWN, nodeType, lineNumber});
+                tokens.push_back({TokenType::UNKNOWN, nodeType, lineNumber, indent});
                 continue;
             }
 
-            tokens.push_back({TokenType::NODE_TYPE, nodeType, lineNumber});
+            // Emite token del Tipo de Nodo
+            tokens.push_back({TokenType::NODE_TYPE, nodeType, lineNumber, indent});
+
+            // Si se definió un nombre opcional (ej. "main_window"), emite token de Nombre
+            if (!nodeName.empty()) {
+                tokens.push_back({TokenType::NODE_NAME, nodeName, lineNumber, indent});
+            }
         }
     }
 

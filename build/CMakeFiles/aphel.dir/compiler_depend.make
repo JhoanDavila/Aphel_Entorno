@@ -785,6 +785,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o: /home/jhoan/pers
 
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/reader/AphluiReader.cpp \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/cleaner/Cleaner.h \
+  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/error_manager/ErrorManager.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/reader/AphluiReader.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Token.h \
@@ -1011,6 +1012,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o: /home/jhoa
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stdint.h
 
 CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp \
+  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/error_manager/ErrorManager.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Token.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.h \
   /usr/include/alloca.h \
@@ -1029,17 +1031,22 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o: /home/jhoa
   /usr/include/c++/13/bits/concept_check.h \
   /usr/include/c++/13/bits/cpp_type_traits.h \
   /usr/include/c++/13/bits/cxxabi_forced.h \
+  /usr/include/c++/13/bits/enable_special_members.h \
+  /usr/include/c++/13/bits/erase_if.h \
   /usr/include/c++/13/bits/exception.h \
   /usr/include/c++/13/bits/exception_defines.h \
   /usr/include/c++/13/bits/functexcept.h \
   /usr/include/c++/13/bits/functional_hash.h \
   /usr/include/c++/13/bits/hash_bytes.h \
+  /usr/include/c++/13/bits/hashtable.h \
+  /usr/include/c++/13/bits/hashtable_policy.h \
   /usr/include/c++/13/bits/invoke.h \
   /usr/include/c++/13/bits/localefwd.h \
   /usr/include/c++/13/bits/memory_resource.h \
   /usr/include/c++/13/bits/memoryfwd.h \
   /usr/include/c++/13/bits/move.h \
   /usr/include/c++/13/bits/new_allocator.h \
+  /usr/include/c++/13/bits/node_handle.h \
   /usr/include/c++/13/bits/ostream_insert.h \
   /usr/include/c++/13/bits/postypes.h \
   /usr/include/c++/13/bits/predefined_ops.h \
@@ -1064,6 +1071,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o: /home/jhoa
   /usr/include/c++/13/bits/string_view.tcc \
   /usr/include/c++/13/bits/stringfwd.h \
   /usr/include/c++/13/bits/uniform_int_dist.h \
+  /usr/include/c++/13/bits/unordered_set.h \
   /usr/include/c++/13/bits/uses_allocator.h \
   /usr/include/c++/13/bits/uses_allocator_args.h \
   /usr/include/c++/13/bits/utility.h \
@@ -1077,6 +1085,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o: /home/jhoa
   /usr/include/c++/13/cwchar \
   /usr/include/c++/13/debug/assertions.h \
   /usr/include/c++/13/debug/debug.h \
+  /usr/include/c++/13/ext/aligned_buffer.h \
   /usr/include/c++/13/ext/alloc_traits.h \
   /usr/include/c++/13/ext/numeric_traits.h \
   /usr/include/c++/13/ext/string_conversions.h \
@@ -1091,6 +1100,7 @@ CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o: /home/jhoa
   /usr/include/c++/13/string_view \
   /usr/include/c++/13/tuple \
   /usr/include/c++/13/type_traits \
+  /usr/include/c++/13/unordered_set \
   /usr/include/c++/13/vector \
   /usr/include/ctype.h \
   /usr/include/endian.h \
@@ -1930,7 +1940,15 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 
 /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.cpp:
 
+/usr/include/c++/13/bits/unordered_set.h:
+
 /usr/include/c++/13/bits/stl_heap.h:
+
+/usr/include/c++/13/bits/node_handle.h:
+
+/usr/include/c++/13/bits/hashtable.h:
+
+/usr/include/c++/13/bits/enable_special_members.h:
 
 /usr/include/c++/13/algorithm:
 
@@ -2094,6 +2112,8 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 
 /usr/include/c++/13/bits/locale_classes.tcc:
 
+/usr/include/c++/13/bits/hashtable_policy.h:
+
 /usr/include/x86_64-linux-gnu/bits/types/clock_t.h:
 
 /usr/include/c++/13/bits/char_traits.h:
@@ -2123,6 +2143,8 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 /usr/include/c++/13/type_traits:
 
 /usr/include/c++/13/backward/auto_ptr.h:
+
+/usr/include/c++/13/bits/erase_if.h:
 
 /usr/include/c++/13/bits/shared_ptr_atomic.h:
 
@@ -2265,6 +2287,8 @@ CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o: /home/jhoan/personal_delo
 /usr/include/x86_64-linux-gnu/bits/types/struct___jmp_buf_tag.h:
 
 /usr/include/c++/13/bits/stl_tempbuf.h:
+
+/usr/include/c++/13/unordered_set:
 
 /usr/include/c++/13/bits/stl_vector.h:
 
