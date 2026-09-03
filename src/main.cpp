@@ -1,23 +1,17 @@
 #include <iostream>
-#include <fstream>
-#include <vector>
-#include <string>
 #include <memory>
 
 #include "ui/nodes/node/Node.h"
 #include "ui/nodes/visual_node/VisualNode.h"
 #include "ui/nodes/2dspace/2DSpace.h"
 #include "ui/nodes/window/Window.h"
-#include "ui/lector_aphelui/cleaner/Cleaner.h"
-#include "ui/lector_aphelui/tokenizer/Tokenizer.h"
-#include "ui/lector_aphelui/parser/Parser.h"
+#include "ui/lector_aphelui/reader/AphluiReader.h"
 
 void printTree(const std::shared_ptr<Node>& node, int depth = 0) {
     if (!node) return;
 
     std::string indent(depth * 4, ' ');
 
-    // Evaluación en orden de jerarquía (de la clase más derivada a la base)
     auto winRef = std::dynamic_pointer_cast<WindowNode>(node);
     auto spaceRef = std::dynamic_pointer_cast<Space2D>(node);
     auto visualRef = std::dynamic_pointer_cast<VisualNode>(node);
@@ -55,20 +49,8 @@ int main(int argc, char* argv[]) {
 
     std::cout << "=== APHEL ENGINE v0.0.0.8 ===" << std::endl;
 
-    std::ifstream file(filePath);
-    if (!file.is_open()) {
-        std::cerr << "[Error] No se pudo abrir: " << filePath << std::endl;
-        return 1;
-    }
-
-    std::vector<std::string> rawLines;
-    std::string line;
-    while (std::getline(file, line)) rawLines.push_back(line);
-    file.close();
-
-    std::vector<std::string> cleanLines = Cleaner::removeCommentsAndEmptyLines(rawLines);
-    std::vector<Token> tokens = Tokenizer::tokenize(cleanLines);
-    std::shared_ptr<Node> root = Parser::parse(tokens);
+    // Una sola línea invoca todo el proceso de carga
+    std::shared_ptr<Node> root = AphluiReader::loadFromFile(filePath);
 
     if (root) {
         std::cout << "--- Árbol de Nodos Generado en RAM ---" << std::endl;

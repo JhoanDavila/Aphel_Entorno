@@ -201,6 +201,30 @@ src/ui/lector_aphelui/parser/Parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.s
 .PHONY : src/ui/lector_aphelui/parser/Parser.cpp.s
 
+src/ui/lector_aphelui/reader/AphluiReader.o: src/ui/lector_aphelui/reader/AphluiReader.cpp.o
+.PHONY : src/ui/lector_aphelui/reader/AphluiReader.o
+
+# target to build an object file
+src/ui/lector_aphelui/reader/AphluiReader.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o
+.PHONY : src/ui/lector_aphelui/reader/AphluiReader.cpp.o
+
+src/ui/lector_aphelui/reader/AphluiReader.i: src/ui/lector_aphelui/reader/AphluiReader.cpp.i
+.PHONY : src/ui/lector_aphelui/reader/AphluiReader.i
+
+# target to preprocess a source file
+src/ui/lector_aphelui/reader/AphluiReader.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.i
+.PHONY : src/ui/lector_aphelui/reader/AphluiReader.cpp.i
+
+src/ui/lector_aphelui/reader/AphluiReader.s: src/ui/lector_aphelui/reader/AphluiReader.cpp.s
+.PHONY : src/ui/lector_aphelui/reader/AphluiReader.s
+
+# target to generate assembly for a file
+src/ui/lector_aphelui/reader/AphluiReader.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.s
+.PHONY : src/ui/lector_aphelui/reader/AphluiReader.cpp.s
+
 src/ui/lector_aphelui/tokenizer/Tokenizer.o: src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o
 .PHONY : src/ui/lector_aphelui/tokenizer/Tokenizer.o
 
@@ -339,6 +363,9 @@ help:
 	@echo "... src/ui/lector_aphelui/parser/Parser.o"
 	@echo "... src/ui/lector_aphelui/parser/Parser.i"
 	@echo "... src/ui/lector_aphelui/parser/Parser.s"
+	@echo "... src/ui/lector_aphelui/reader/AphluiReader.o"
+	@echo "... src/ui/lector_aphelui/reader/AphluiReader.i"
+	@echo "... src/ui/lector_aphelui/reader/AphluiReader.s"
 	@echo "... src/ui/lector_aphelui/tokenizer/Tokenizer.o"
 	@echo "... src/ui/lector_aphelui/tokenizer/Tokenizer.i"
 	@echo "... src/ui/lector_aphelui/tokenizer/Tokenizer.s"

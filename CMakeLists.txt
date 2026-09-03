@@ -15,6 +15,7 @@ file(GLOB_RECURSE SOURCES
     "src/ui/lector_aphelui/cleaner/*.cpp"
     "src/ui/lector_aphelui/tokenizer/*.cpp"
     "src/ui/lector_aphelui/parser/*.cpp"
+    "src/ui/lector_aphelui/reader/*.cpp"
 )
 
 add_executable(aphel ${SOURCES})

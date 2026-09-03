@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o.d"
   "CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o"
   "CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o.d"
+  "CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o"
+  "CMakeFiles/aphel.dir/src/ui/lector_aphelui/reader/AphluiReader.cpp.o.d"
   "CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o"
   "CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o.d"
   "CMakeFiles/aphel.dir/src/ui/nodes/2dspace/2DSpace.cpp.o"
