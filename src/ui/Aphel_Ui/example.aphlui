@@ -7,3 +7,6 @@ Node:
         .position: (120,300)
     Node:
         .name: "nodo_1_2"
+        VisualNode:
+            .name: "marcador_centro"
+            .position: (600,280)

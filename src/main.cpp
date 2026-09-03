@@ -4,8 +4,8 @@
 #include <string>
 #include <memory>
 
-// Inclusiones respetando tu árbol de carpetas
 #include "ui/nodes/node/Node.h"
+#include "ui/nodes/visual_node/VisualNode.h"
 #include "ui/lector_aphelui/cleaner/Cleaner.h"
 #include "ui/lector_aphelui/tokenizer/Tokenizer.h"
 #include "ui/lector_aphelui/parser/Parser.h"
@@ -14,7 +14,15 @@ void printTree(const std::shared_ptr<Node>& node, int depth = 0) {
     if (!node) return;
 
     std::string indent(depth * 4, ' ');
-    std::cout << indent << "- Node [Name: \"" << node->name << "\"]" << std::endl;
+    
+    // Si el nodo es un VisualNode, mostramos también su posición
+    auto visualRef = std::dynamic_pointer_cast<VisualNode>(node);
+    if (visualRef) {
+        std::cout << indent << "- VisualNode [Name: \"" << visualRef->name 
+                  << "\", Position: (" << visualRef->position.x << ", " << visualRef->position.y << ")]" << std::endl;
+    } else {
+        std::cout << indent << "- Node [Name: \"" << node->name << "\"]" << std::endl;
+    }
 
     for (const auto& child : node->children) {
         printTree(child, depth + 1);
@@ -22,42 +30,30 @@ void printTree(const std::shared_ptr<Node>& node, int depth = 0) {
 }
 
 int main(int argc, char* argv[]) {
-    // Ruta por defecto apuntando a tu carpeta ui/Aphel_Ui/example.aphlui
-    std::string filePath = "src/ui/Aphel_Ui/example.aphlui";
+    std::string filePath = "../src/ui/Aphel_Ui/example.aphlui";
+    if (argc > 1) filePath = argv[1];
 
-    if (argc > 1) {
-        filePath = argv[1];
-    }
-
-    std::cout << "=== APHEL ENGINE v0.0.0.6 - INTEGRATION TEST ===" << std::endl;
-    std::cout << "Leyendo archivo: " << filePath << std::endl << std::endl;
+    std::cout << "=== APHEL ENGINE v0.0.0.7 ===" << std::endl;
 
     std::ifstream file(filePath);
     if (!file.is_open()) {
-        std::cerr << "[Error] No se pudo abrir el archivo: " << filePath << std::endl;
+        std::cerr << "[Error] No se pudo abrir: " << filePath << std::endl;
         return 1;
     }
 
     std::vector<std::string> rawLines;
     std::string line;
-    while (std::getline(file, line)) {
-        rawLines.push_back(line);
-    }
+    while (std::getline(file, line)) rawLines.push_back(line);
     file.close();
 
-    // Pipeline
     std::vector<std::string> cleanLines = Cleaner::removeCommentsAndEmptyLines(rawLines);
     std::vector<Token> tokens = Tokenizer::tokenize(cleanLines);
     std::shared_ptr<Node> root = Parser::parse(tokens);
 
     if (root) {
-        std::cout << "--- Árbol de Nodos Generado en Memoria ---" << std::endl;
+        std::cout << "--- Árbol de Nodos Generado ---" << std::endl;
         printTree(root);
-        std::cout << "------------------------------------------" << std::endl;
-        std::cout << "¡Éxito! El flujo completo funciona correctamente." << std::endl;
-    } else {
-        std::cerr << "[Error] El Parser no pudo generar el árbol de nodos." << std::endl;
-        return 1;
+        std::cout << "-------------------------------" << std::endl;
     }
 
     return 0;

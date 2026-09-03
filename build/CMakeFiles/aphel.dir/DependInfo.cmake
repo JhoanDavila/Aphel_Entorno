@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/parser/Parser.cpp" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/parser/Parser.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.cpp" "CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o.d"
+  "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.cpp" "CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

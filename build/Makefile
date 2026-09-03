@@ -249,6 +249,30 @@ src/ui/nodes/node/Node.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.s
 .PHONY : src/ui/nodes/node/Node.cpp.s
 
+src/ui/nodes/visual_node/VisualNode.o: src/ui/nodes/visual_node/VisualNode.cpp.o
+.PHONY : src/ui/nodes/visual_node/VisualNode.o
+
+# target to build an object file
+src/ui/nodes/visual_node/VisualNode.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o
+.PHONY : src/ui/nodes/visual_node/VisualNode.cpp.o
+
+src/ui/nodes/visual_node/VisualNode.i: src/ui/nodes/visual_node/VisualNode.cpp.i
+.PHONY : src/ui/nodes/visual_node/VisualNode.i
+
+# target to preprocess a source file
+src/ui/nodes/visual_node/VisualNode.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.i
+.PHONY : src/ui/nodes/visual_node/VisualNode.cpp.i
+
+src/ui/nodes/visual_node/VisualNode.s: src/ui/nodes/visual_node/VisualNode.cpp.s
+.PHONY : src/ui/nodes/visual_node/VisualNode.s
+
+# target to generate assembly for a file
+src/ui/nodes/visual_node/VisualNode.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.s
+.PHONY : src/ui/nodes/visual_node/VisualNode.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -273,6 +297,9 @@ help:
 	@echo "... src/ui/nodes/node/Node.o"
 	@echo "... src/ui/nodes/node/Node.i"
 	@echo "... src/ui/nodes/node/Node.s"
+	@echo "... src/ui/nodes/visual_node/VisualNode.o"
+	@echo "... src/ui/nodes/visual_node/VisualNode.i"
+	@echo "... src/ui/nodes/visual_node/VisualNode.s"
 .PHONY : help
 
 

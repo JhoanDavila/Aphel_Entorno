@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/aphel.dir/src/ui/lector_aphelui/tokenizer/Tokenizer.cpp.o.d"
   "CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o"
   "CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o.d"
+  "CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o"
+  "CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o.d"
   "aphel"
   "aphel.pdb"
 )

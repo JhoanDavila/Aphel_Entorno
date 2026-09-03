@@ -1,7 +1,7 @@
 #ifndef VISUAL_NODE_H
 #define VISUAL_NODE_H
 
-#include "Node.h"
+#include "../node/Node.h"
 
 struct Vector2D {
     int x = 0;

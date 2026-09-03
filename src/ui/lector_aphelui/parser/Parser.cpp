@@ -1,5 +1,26 @@
-#include "Parser.h"
+#include "ui/lector_aphelui/parser/Parser.h"
 #include <stack>
+#include <sstream>
+
+Vector2D Parser::parseVector2D(const std::string& valStr) {
+    Vector2D vec{0, 0};
+    // Eliminamos los paréntesis si están presentes
+    std::string clean = valStr;
+    if (!clean.empty() && clean.front() == '(') clean.erase(0, 1);
+    if (!clean.empty() && clean.back() == ')') clean.pop_back();
+
+    size_t commaPos = clean.find(',');
+    if (commaPos != std::string::npos) {
+        try {
+            vec.x = std::stoi(clean.substr(0, commaPos));
+            vec.y = std::stoi(clean.substr(commaPos + 1));
+        } catch (...) {
+            vec.x = 0;
+            vec.y = 0;
+        }
+    }
+    return vec;
+}
 
 std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
     if (tokens.empty()) return nullptr;
@@ -10,37 +31,61 @@ std::shared_ptr<Node> Parser::parse(const std::vector<Token>& tokens) {
     for (size_t i = 0; i < tokens.size(); ++i) {
         const auto& token = tokens[i];
 
-        // Cuando encontramos un nuevo Nodo
         if (token.type == TokenType::NODE_TYPE) {
-            auto currentNode = std::make_shared<Node>(token.value);
+            std::shared_ptr<Node> currentNode = nullptr;
 
-            // Si el siguiente token es la propiedad .name, le asignamos su nombre
-            if (i + 2 < tokens.size() && 
-                tokens[i + 1].type == TokenType::PROPERTY && 
-                tokens[i + 1].value == ".name" && 
-                tokens[i + 2].type == TokenType::VALUE) {
-                
-                currentNode->name = tokens[i + 2].value;
+            // 1. Instanciación Polimórfica según el tipo de nodo
+            if (token.value == "VisualNode") {
+                currentNode = std::make_shared<VisualNode>(token.value);
+            } else {
+                currentNode = std::make_shared<Node>(token.value);
             }
 
-            // Si es el primer nodo, se convierte en la Raíz
+            // 2. Procesar dinámicamente todas las propiedades asociadas a este nodo
+            size_t peek = i + 1;
+            while (peek < tokens.size() && tokens[peek].type == TokenType::PROPERTY) {
+                std::string propName = tokens[peek].value;
+                
+                // Si la propiedad tiene un valor correspondiente
+                if (peek + 1 < tokens.size() && tokens[peek + 1].type == TokenType::VALUE) {
+                    std::string propValue = tokens[peek + 1].value;
+
+                    // Asignación de .name
+                    if (propName == ".name") {
+                        currentNode->name = propValue;
+                    } 
+                    // Asignación de .position (solo si es un VisualNode)
+                    else if (propName == ".position") {
+                        auto visualRef = std::dynamic_pointer_cast<VisualNode>(currentNode);
+                        if (visualRef) {
+                            visualRef->position = parseVector2D(propValue);
+                        }
+                    }
+
+                    peek += 2; // Avanzamos la propiedad y su valor
+                } else {
+                    peek++;
+                }
+            }
+
+            // Actualizamos el índice principal para no volver a iterar sobre las propiedades procesadas
+            i = peek - 1;
+
+            // 3. Ubicación del nodo dentro del árbol jerárquico
             if (!root) {
                 root = currentNode;
                 nodeStack.push({token.indentLevel, currentNode});
                 continue;
             }
 
-            // Desapilamos nodos que estén al mismo nivel o más profundos
             while (!nodeStack.empty() && nodeStack.top().first >= token.indentLevel) {
                 nodeStack.pop();
             }
 
-            // El nodo en el tope de la pila es el padre directo
             if (!nodeStack.empty()) {
                 nodeStack.top().second->addChild(currentNode);
             }
 
-            // Apilamos el nodo actual para futuros hijos
             nodeStack.push({token.indentLevel, currentNode});
         }
     }
