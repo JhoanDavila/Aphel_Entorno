@@ -14,3 +14,6 @@ Es la estructura minima de mi arbol de nodos.
 este es la base de los nodos visuales de la interfaz.
 
 * position: es un vector 2d de X y Y: (X,Y)
+## Espacio 2D (hereda nodo visual):
+
+* Size: es un vector 2d con el tamaño (ancho, alto)
