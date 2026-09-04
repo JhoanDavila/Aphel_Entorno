@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/aphel.dir/src/main.cpp.o"
   "CMakeFiles/aphel.dir/src/main.cpp.o.d"
+  "CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o"
+  "CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o.d"
   "CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o"
   "CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o.d"
   "CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o"

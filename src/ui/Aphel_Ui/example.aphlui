@@ -1,3 +1,9 @@
 Window:
+    .position: (0,20)
+    .size: (600,300)
+    .title: "app_example"
     Node:
         .name: "Nodo exito"
+    Space2D:
+        .size: (400,200)
+        .position: (100,35)

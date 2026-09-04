@@ -153,6 +153,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/ui/Renderer/structurerender/StructureRender.o: src/ui/Renderer/structurerender/StructureRender.cpp.o
+.PHONY : src/ui/Renderer/structurerender/StructureRender.o
+
+# target to build an object file
+src/ui/Renderer/structurerender/StructureRender.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o
+.PHONY : src/ui/Renderer/structurerender/StructureRender.cpp.o
+
+src/ui/Renderer/structurerender/StructureRender.i: src/ui/Renderer/structurerender/StructureRender.cpp.i
+.PHONY : src/ui/Renderer/structurerender/StructureRender.i
+
+# target to preprocess a source file
+src/ui/Renderer/structurerender/StructureRender.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.i
+.PHONY : src/ui/Renderer/structurerender/StructureRender.cpp.i
+
+src/ui/Renderer/structurerender/StructureRender.s: src/ui/Renderer/structurerender/StructureRender.cpp.s
+.PHONY : src/ui/Renderer/structurerender/StructureRender.s
+
+# target to generate assembly for a file
+src/ui/Renderer/structurerender/StructureRender.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.s
+.PHONY : src/ui/Renderer/structurerender/StructureRender.cpp.s
+
 src/ui/lector_aphelui/cleaner/Cleaner.o: src/ui/lector_aphelui/cleaner/Cleaner.cpp.o
 .PHONY : src/ui/lector_aphelui/cleaner/Cleaner.o
 
@@ -381,6 +405,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/ui/Renderer/structurerender/StructureRender.o"
+	@echo "... src/ui/Renderer/structurerender/StructureRender.i"
+	@echo "... src/ui/Renderer/structurerender/StructureRender.s"
 	@echo "... src/ui/lector_aphelui/cleaner/Cleaner.o"
 	@echo "... src/ui/lector_aphelui/cleaner/Cleaner.i"
 	@echo "... src/ui/lector_aphelui/cleaner/Cleaner.s"
