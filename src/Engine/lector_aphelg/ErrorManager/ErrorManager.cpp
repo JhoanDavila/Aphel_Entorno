@@ -1,7 +1,8 @@
 #include "ErrorManager.h"
 #include <iostream>
 
-// Inicialización de la lista estática global
+namespace AphelG {
+
 std::vector<SyntaxError> ErrorManager::errors;
 
 void ErrorManager::logError(int line, const std::string& message) {
@@ -21,3 +22,5 @@ void ErrorManager::printErrors() {
 void ErrorManager::clear() {
     errors.clear();
 }
+
+} // namespace AphelG

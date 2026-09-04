@@ -153,6 +153,54 @@ src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.s
 .PHONY : src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.s
 
+src/Engine/lector_aphelg/ErrorManager/ErrorManager.o: src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.o
+.PHONY : src/Engine/lector_aphelg/ErrorManager/ErrorManager.o
+
+# target to build an object file
+src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.o
+.PHONY : src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.o
+
+src/Engine/lector_aphelg/ErrorManager/ErrorManager.i: src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.i
+.PHONY : src/Engine/lector_aphelg/ErrorManager/ErrorManager.i
+
+# target to preprocess a source file
+src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.i
+.PHONY : src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.i
+
+src/Engine/lector_aphelg/ErrorManager/ErrorManager.s: src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.s
+.PHONY : src/Engine/lector_aphelg/ErrorManager/ErrorManager.s
+
+# target to generate assembly for a file
+src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.s
+.PHONY : src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.s
+
+src/Engine/lector_aphelg/Tokenizer/Tokenizer.o: src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o
+.PHONY : src/Engine/lector_aphelg/Tokenizer/Tokenizer.o
+
+# target to build an object file
+src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o
+.PHONY : src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o
+
+src/Engine/lector_aphelg/Tokenizer/Tokenizer.i: src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.i
+.PHONY : src/Engine/lector_aphelg/Tokenizer/Tokenizer.i
+
+# target to preprocess a source file
+src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.i
+.PHONY : src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.i
+
+src/Engine/lector_aphelg/Tokenizer/Tokenizer.s: src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.s
+.PHONY : src/Engine/lector_aphelg/Tokenizer/Tokenizer.s
+
+# target to generate assembly for a file
+src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.s
+.PHONY : src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -501,6 +549,12 @@ help:
 	@echo "... src/Engine/lector_aphelg/Cleaner/Cleaner.o"
 	@echo "... src/Engine/lector_aphelg/Cleaner/Cleaner.i"
 	@echo "... src/Engine/lector_aphelg/Cleaner/Cleaner.s"
+	@echo "... src/Engine/lector_aphelg/ErrorManager/ErrorManager.o"
+	@echo "... src/Engine/lector_aphelg/ErrorManager/ErrorManager.i"
+	@echo "... src/Engine/lector_aphelg/ErrorManager/ErrorManager.s"
+	@echo "... src/Engine/lector_aphelg/Tokenizer/Tokenizer.o"
+	@echo "... src/Engine/lector_aphelg/Tokenizer/Tokenizer.i"
+	@echo "... src/Engine/lector_aphelg/Tokenizer/Tokenizer.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

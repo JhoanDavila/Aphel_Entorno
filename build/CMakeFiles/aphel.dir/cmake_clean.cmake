@@ -1,6 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.o"
   "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.o.d"
+  "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.o"
+  "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.o.d"
+  "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o"
+  "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o.d"
   "CMakeFiles/aphel.dir/src/main.cpp.o"
   "CMakeFiles/aphel.dir/src/main.cpp.o.d"
   "CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.o"

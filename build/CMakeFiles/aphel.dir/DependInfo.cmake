@@ -9,6 +9,8 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Cleaner/Cleaner.cpp" "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.o.d"
+  "/home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp" "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.o.d"
+  "/home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp" "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/main.cpp" "CMakeFiles/aphel.dir/src/main.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/main.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/paintrender/PaintRender.cpp" "CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/renderengine/RenderEngine.cpp" "CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o.d"

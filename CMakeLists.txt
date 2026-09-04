@@ -17,11 +17,14 @@ include_directories(
 )
 
 # 2. Registrar todos los archivos fuente (.cpp)
+# 2. Registrar todos los archivos fuente (.cpp)
 set(SOURCES
     src/main.cpp
     
     # Lector AphelG
     src/Engine/lector_aphelg/Cleaner/Cleaner.cpp
+    src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp
+    src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp # <-- AÑADIR ESTA LÍNEA
     
     # Lector AphelUI
     src/ui/lector_aphelui/cleaner/Cleaner.cpp
