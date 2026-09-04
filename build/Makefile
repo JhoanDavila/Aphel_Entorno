@@ -201,6 +201,30 @@ src/Engine/lector_aphelg/Parser/Parser.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Parser/Parser.cpp.s
 .PHONY : src/Engine/lector_aphelg/Parser/Parser.cpp.s
 
+src/Engine/lector_aphelg/PathResolver/PathResolver.o: src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.o
+.PHONY : src/Engine/lector_aphelg/PathResolver/PathResolver.o
+
+# target to build an object file
+src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.o
+.PHONY : src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.o
+
+src/Engine/lector_aphelg/PathResolver/PathResolver.i: src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.i
+.PHONY : src/Engine/lector_aphelg/PathResolver/PathResolver.i
+
+# target to preprocess a source file
+src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.i
+.PHONY : src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.i
+
+src/Engine/lector_aphelg/PathResolver/PathResolver.s: src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.s
+.PHONY : src/Engine/lector_aphelg/PathResolver/PathResolver.s
+
+# target to generate assembly for a file
+src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.s
+.PHONY : src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.s
+
 src/Engine/lector_aphelg/Tokenizer/Tokenizer.o: src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o
 .PHONY : src/Engine/lector_aphelg/Tokenizer/Tokenizer.o
 
@@ -579,6 +603,9 @@ help:
 	@echo "... src/Engine/lector_aphelg/Parser/Parser.o"
 	@echo "... src/Engine/lector_aphelg/Parser/Parser.i"
 	@echo "... src/Engine/lector_aphelg/Parser/Parser.s"
+	@echo "... src/Engine/lector_aphelg/PathResolver/PathResolver.o"
+	@echo "... src/Engine/lector_aphelg/PathResolver/PathResolver.i"
+	@echo "... src/Engine/lector_aphelg/PathResolver/PathResolver.s"
 	@echo "... src/Engine/lector_aphelg/Tokenizer/Tokenizer.o"
 	@echo "... src/Engine/lector_aphelg/Tokenizer/Tokenizer.i"
 	@echo "... src/Engine/lector_aphelg/Tokenizer/Tokenizer.s"

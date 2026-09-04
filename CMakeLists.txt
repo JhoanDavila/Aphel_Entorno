@@ -27,6 +27,7 @@ set(SOURCES
     src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp
     src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp
     src/Engine/lector_aphelg/Parser/Parser.cpp # <-- AÑADIDO
+    src/Engine/lector_aphelg/PathResolver/PathResolver.cpp
 
     # Lector AphelUI
     src/ui/lector_aphelui/cleaner/Cleaner.cpp
