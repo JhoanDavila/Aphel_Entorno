@@ -1,12 +1,63 @@
 #include "AphelEngine.h"
+#include "../Cleaner/Cleaner.h"
+#include "../Tokenizer/Tokenizer.h"
+#include "../Parser/Parser.h"
 #include "../PathResolver/PathResolver.h"
 #include "../ErrorManager/ErrorManager.h"
 #include "../../../ui/lector_aphelui/reader/AphluiReader.h"
 #include "../../../ui/Renderer/renderengine/RenderEngine.h"
+#include <fstream>
+#include <sstream>
+#include <iostream>
 
 namespace AphelG {
 
+bool AphelEngine::runScript(const std::string& filePath) {
+    std::ifstream file(filePath);
+    if (!file.is_open()) {
+        ErrorManager::logError(0, "Error: No se pudo abrir el archivo " + filePath);
+        return false;
+    }
+
+    std::stringstream buffer;
+    buffer << file.rdbuf();
+    file.close();
+
+    // 1. Limpieza de comentarios
+    std::string cleanedScript = AphlgCleaner::clean(buffer.str());
+
+    // 2. Tokenización
+    Tokenizer tokenizer(cleanedScript);
+    std::vector<Token> tokens = tokenizer.tokenize();
+
+    // 3. Análisis Sintáctico (Parser)
+    Parser parser(tokens);
+    std::vector<Instruction> ast = parser.parse();
+
+    // Validar errores estáticos (sintaxis y tokenización)
+    if (ErrorManager::hasErrors()) {
+        std::cout << "--- ERRORES DE COMPILACIÓN/SINTAXIS ---" << std::endl;
+        ErrorManager::printErrors();
+        return false;
+    }
+
+    // 4. Ejecución del runtime
+    std::cout << "--- EJECUTANDO SCRIPT APHLG ---" << std::endl;
+    AphelEngine engine;
+    engine.execute(ast);
+
+    // Validar errores de ejecución (rutas no encontradas, aliases inválidos)
+    if (ErrorManager::hasErrors()) {
+        std::cout << "--- ERRORES EN TIEMPO DE EJECUCIÓN ---" << std::endl;
+        ErrorManager::printErrors();
+        return false;
+    }
+
+    return true;
+}
+
 void AphelEngine::executeFileDeclaration(const Instruction& inst) {
+    // Resuelve la ruta utilizando la ruta base del script para mayor precisión
     std::string realPath = PathResolver::resolve(inst.path);
 
     // Carga el árbol de nodos del archivo .aphlui

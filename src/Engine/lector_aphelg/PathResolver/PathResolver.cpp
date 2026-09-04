@@ -1,37 +1,35 @@
 #include "PathResolver.h"
-#include <sstream>
-#include <vector>
+#include <filesystem>
+#include <algorithm>
 
 namespace AphelG {
 
 std::string PathResolver::resolve(const std::string& customPath, const std::string& basePath) {
-    if (customPath.empty()) return "";
-
-    std::vector<std::string> segments;
-    std::stringstream ss(customPath);
-    std::string segment;
-
-    // 1. Separar por el caracter ';'
-    while (std::getline(ss, segment, ';')) {
-        if (!segment.empty()) {
-            segments.push_back(segment);
-        }
+    std::string path = customPath;
+    
+    // 1. Reemplazar la sintaxis '--' por '..'
+    size_t pos = 0;
+    while ((pos = path.find("--", pos)) != std::string::npos) {
+        path.replace(pos, 2, "..");
+        pos += 2;
     }
 
-    // 2. Construir la ruta relativa/absoluta
-    std::filesystem::path resultPath = basePath;
+    // 2. Reemplazar separadores ';' por '/'
+    std::replace(path.begin(), path.end(), ';', '/');
 
-    for (const auto& seg : segments) {
-        if (seg == "--") {
-            // "--" equivale a subir un directorio ("..")
-            resultPath /= "..";
-        } else {
-            resultPath /= seg;
-        }
+    // 3. Resolver la ruta absoluta
+    std::filesystem::path fullPath = path;
+    if (!basePath.empty()) {
+        fullPath = std::filesystem::path(basePath).parent_path() / path;
+    } else {
+        // Si no hay basePath, resolver desde el CWD o relativo al directorio del ejecutable
+        fullPath = std::filesystem::absolute(path);
     }
 
-    // 3. Devolver la ruta normalizada estilo C++ std::filesystem
-    return resultPath.lexically_normal().string();
+    std::error_code ec;
+    auto canonicalPath = std::filesystem::weakly_canonical(fullPath, ec);
+    
+    return (!ec) ? canonicalPath.string() : fullPath.string();
 }
 
 } // namespace AphelG

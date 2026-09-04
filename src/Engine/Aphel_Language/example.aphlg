@@ -3,6 +3,6 @@
 comentario miltilinea
 \\\
 
-File ventana = "--;--;ui;Aphel_Ui;example.aphlui"
+File ventana = "--;src;ui;Aphel_Ui;example.aphlui"
 
 Render (ventana)

@@ -21,8 +21,11 @@ private:
 public:
     AphelEngine() = default;
 
-    // Ejecuta la lista de instrucciones sintácticamente válidas
+    // Ejecuta la lista de instrucciones del AST
     void execute(const std::vector<Instruction>& instructions);
+
+    // Método de alto nivel que encapsula todo el pipeline (Clean -> Tokenize -> Parse -> Execute)
+    static bool runScript(const std::string& filePath);
 };
 
 } // namespace AphelG
