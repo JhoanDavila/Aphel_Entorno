@@ -223,10 +223,24 @@ CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/paintrender/PaintRender.cpp -o CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.s
 
+CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o: CMakeFiles/aphel.dir/flags.make
+CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/renderengine/RenderEngine.cpp
+CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o -MF CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/renderengine/RenderEngine.cpp
+
+CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/renderengine/RenderEngine.cpp > CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.i
+
+CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/renderengine/RenderEngine.cpp -o CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.s
+
 CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o: CMakeFiles/aphel.dir/flags.make
 CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/structurerender/StructureRender.cpp
 CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o -MF CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/structurerender/StructureRender.cpp
 
 CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.i: cmake_force
@@ -240,7 +254,7 @@ CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.s: cmak
 CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o: CMakeFiles/aphel.dir/flags.make
 CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/windowso/WindowSO.cpp
 CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o: CMakeFiles/aphel.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o -MF CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o.d -o CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o -c /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/windowso/WindowSO.cpp
 
 CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.i: cmake_force
@@ -264,6 +278,7 @@ aphel_OBJECTS = \
 "CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o" \
 "CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o" \
 "CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.o" \
+"CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o" \
 "CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o" \
 "CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o"
 
@@ -281,6 +296,7 @@ aphel: CMakeFiles/aphel.dir/src/ui/nodes/node/Node.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/nodes/visual_node/VisualNode.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/nodes/window/Window.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.o
+aphel: CMakeFiles/aphel.dir/src/ui/Renderer/renderengine/RenderEngine.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o
 aphel: CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o
 aphel: CMakeFiles/aphel.dir/build.make
@@ -288,7 +304,7 @@ aphel: /usr/lib/x86_64-linux-gnu/libGLEW.so
 aphel: /usr/lib/x86_64-linux-gnu/libGL.so
 aphel: /usr/lib/x86_64-linux-gnu/libglfw.so.3.3
 aphel: CMakeFiles/aphel.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable aphel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/jhoan/personal_deloved/Aphel_Entorno/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Linking CXX executable aphel"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/aphel.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

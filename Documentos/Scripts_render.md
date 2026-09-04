@@ -114,3 +114,30 @@ metodos:
 - startLoop(...): ejecuta el bucle de refresco continuo en pantalla; aplica glClearColor mapeando las funciones rFloat(), gFloat(), bFloat(), aFloat() del WindowNode, solicita la geometría a StructureRender y la dibuja con PaintRender.
 
 - close(): libera los recursos asignados en la VRAM a través de PaintRender, destruye la ventana de GLFW y finaliza el entorno gráfico.
+## RenderEngine.h
+
+se encarga de orquestar el ciclo de vida del subsistema gráfico (inicialización de ventana, bucle de pintado y liberación) a partir de un árbol de nodos previamente cargado.
+
+- appWindow: instancia de WindowSO que abstrae el manejo de la ventana nativa de GLFW y el contexto de OpenGL.
+
+metodos:
+
+- init(...): recibe el rootNode, valida que sea de tipo WindowNode e inicializa la ventana con appWindow.init().
+
+- run(...): inicia el bucle de eventos e interacción visual invocando appWindow.startLoop().
+
+- stop(): cierra la ventana y destruye los recursos invocando appWindow.close().
+
+## RenderEngine.cpp
+
+contiene la implementación para coordinar los componentes de renderizado aislándolos del punto de entrada principal.
+
+- no define nuevos atributos, ejecuta la lógica definida en RenderEngine.h.
+
+metodos:
+
+- init(...): realiza la conversión del nodo raíz a WindowNode y arranca WindowSO.
+
+- run(...): pasa la ejecución al bucle principal de renderizado.
+
+- stop(): invoca la limpieza de la ventana gráfica.

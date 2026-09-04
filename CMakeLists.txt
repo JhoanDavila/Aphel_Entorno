@@ -35,6 +35,7 @@ set(SOURCES
     
     # Renderer
     src/ui/Renderer/paintrender/PaintRender.cpp
+    src/ui/Renderer/renderengine/RenderEngine.cpp
     src/ui/Renderer/structurerender/StructureRender.cpp
     src/ui/Renderer/windowso/WindowSO.cpp
 )
