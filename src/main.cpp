@@ -1,73 +1,55 @@
 #include <iostream>
 #include <memory>
 
-// Incluir Lector (AphluiReader)
 #include "ui/lector_aphelui/reader/AphluiReader.h"
+#include "ui/nodes/window/Window.h"
+#include "ui/Renderer/windowso/WindowSO.h"
 
-// Incluir Modulos del Renderer
-#include "ui/Renderer/structurerender/StructureRender.h"
-#include "ui/Renderer/paintrender/PaintRender.h"
-
-int main() {
-    std::cout << "=== [APHEL ENGINE UI - PIPELINE TEST] ===" << std::endl;
-
-    // 1. CARGA Y PARSEO DEL ARCHIVO .aphlui -> AST
-    std::string filePath = "../src/ui/Aphel_Ui/example.aphlui";
-    std::cout << "\n[1/3] Cargando UI desde: " << filePath << std::endl;
+int main(int argc, char* argv[]) {
+    // 1. Determinar la ruta del archivo .aphlui
+    std::string filePath = "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Aphel_Ui/example.aphlui";
     
-    std::shared_ptr<Node> root = AphluiReader::loadFromFile(filePath);
+    if (argc > 1) {
+        filePath = argv[1];
+    }
 
-    if (!root) {
-        std::cerr << "[ERROR] Falló la carga del árbol AST. Revisa los errores de sintaxis." << std::endl;
+    std::cout << "[AphelUI] Cargando archivo de interfaz: " << filePath << "..." << std::endl;
+
+    // 2. Cargar y procesar el archivo .aphlui (Cleaner -> Tokenizer -> Parser)
+    std::shared_ptr<Node> rootNode = AphluiReader::loadFromFile(filePath);
+
+    if (!rootNode) {
+        std::cerr << "[AphelUI Fatal Error] No se pudo construir el árbol de nodos. "
+                  << "Verifica los errores de sintaxis o la ruta del archivo." << std::endl;
         return -1;
     }
 
-    std::cout << "[ÉXITO] Árbol AST cargado correctamente en memoria." << std::endl;
-
-    // 2. CONSTRUCCIÓN DE GEOMETRÍA -> StructureRender
-    std::cout << "\n[2/3] Generando vértices e índices (StructureRender)..." << std::endl;
-    
-    StructureRender structureRender;
-    RenderBatch batch = structureRender.buildGeometry(root);
-
-    if (batch.vertices.empty() || batch.indices.empty()) {
-        std::cout << "[WARN] El batch está vacío. No hay nodos visuales para pintar." << std::endl;
-        return 0;
-    }
-
-    // 3. PREPARACIÓN Y DIBUJADO DE LA GEOMETRÍA -> PaintRender
-    std::cout << "\n[3/3] Evaluando integración con PaintRender..." << std::endl;
-
-    PaintRender paintRender;
-
-    // Nota: Si aún no tienes la ventana GLFW/SDL iniciada en main, 
-    // puedes llamar a debugPrintGPUState para verificar el cálculo del lote
-    paintRender.debugPrintGPUState(batch);
-
-    /* 
-    ===================================================================
-    FLUJO COMPLETO EN EL BUCLE DE RENDER (Una vez iniciada la ventana GLFW/GLEW):
-    ===================================================================
-    
-    if (!paintRender.init()) {
-        std::cerr << "Error al inicializar Shaders y Buffers de OpenGL" << std::endl;
+    // 3. Validar que la raíz sea de tipo WindowNode
+    auto windowNode = std::dynamic_pointer_cast<WindowNode>(rootNode);
+    if (!windowNode) {
+        std::cerr << "[AphelUI Fatal Error] El nodo raíz debe ser de tipo 'Window'." << std::endl;
         return -1;
     }
 
-    // Definir la proyección ortográfica con las dimensiones de tu ventana
-    paintRender.setOrthographicProjection(800.0f, 600.0f);
+    std::cout << "[AphelUI] Árbol de nodos generado con éxito." << std::endl;
+    std::cout << "          - Título de ventana: " << windowNode->title << std::endl;
+    std::cout << "          - Dimensiones: " << windowNode->size.width << "x" << windowNode->size.height << std::endl;
 
-    // En el Render Loop de GLFW:
-    // while (!glfwWindowShouldClose(window)) {
-    //     glClear(GL_COLOR_BUFFER_BIT);
-    //     
-    //     paintRender.render(batch);
-    //     
-    //     glfwSwapBuffers(window);
-    //     glfwPollEvents();
-    // }
-    */
+    // 4. Inicializar la ventana del SO (GLFW + OpenGL + PaintRender)
+    WindowSO appWindow;
 
-    std::cout << "\n=== [PIPELINE COMPLETADO EXITOSAMENTE] ===" << std::endl;
+    if (!appWindow.init(windowNode)) {
+        std::cerr << "[AphelUI Fatal Error] Fallo al inicializar la ventana de GLFW/OpenGL." << std::endl;
+        return -1;
+    }
+
+    // 5. Iniciar el bucle principal de renderizado
+    std::cout << "[AphelUI] Iniciando bucle de renderizado..." << std::endl;
+    appWindow.startLoop(rootNode);
+
+    // 6. Cierre limpio
+    appWindow.close();
+    std::cout << "[AphelUI] Aplicación finalizada correctamente." << std::endl;
+
     return 0;
 }

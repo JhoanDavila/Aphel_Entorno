@@ -201,6 +201,30 @@ src/ui/Renderer/structurerender/StructureRender.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.s
 .PHONY : src/ui/Renderer/structurerender/StructureRender.cpp.s
 
+src/ui/Renderer/windowso/WindowSO.o: src/ui/Renderer/windowso/WindowSO.cpp.o
+.PHONY : src/ui/Renderer/windowso/WindowSO.o
+
+# target to build an object file
+src/ui/Renderer/windowso/WindowSO.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.o
+.PHONY : src/ui/Renderer/windowso/WindowSO.cpp.o
+
+src/ui/Renderer/windowso/WindowSO.i: src/ui/Renderer/windowso/WindowSO.cpp.i
+.PHONY : src/ui/Renderer/windowso/WindowSO.i
+
+# target to preprocess a source file
+src/ui/Renderer/windowso/WindowSO.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.i
+.PHONY : src/ui/Renderer/windowso/WindowSO.cpp.i
+
+src/ui/Renderer/windowso/WindowSO.s: src/ui/Renderer/windowso/WindowSO.cpp.s
+.PHONY : src/ui/Renderer/windowso/WindowSO.s
+
+# target to generate assembly for a file
+src/ui/Renderer/windowso/WindowSO.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/ui/Renderer/windowso/WindowSO.cpp.s
+.PHONY : src/ui/Renderer/windowso/WindowSO.cpp.s
+
 src/ui/lector_aphelui/cleaner/Cleaner.o: src/ui/lector_aphelui/cleaner/Cleaner.cpp.o
 .PHONY : src/ui/lector_aphelui/cleaner/Cleaner.o
 
@@ -435,6 +459,9 @@ help:
 	@echo "... src/ui/Renderer/structurerender/StructureRender.o"
 	@echo "... src/ui/Renderer/structurerender/StructureRender.i"
 	@echo "... src/ui/Renderer/structurerender/StructureRender.s"
+	@echo "... src/ui/Renderer/windowso/WindowSO.o"
+	@echo "... src/ui/Renderer/windowso/WindowSO.i"
+	@echo "... src/ui/Renderer/windowso/WindowSO.s"
 	@echo "... src/ui/lector_aphelui/cleaner/Cleaner.o"
 	@echo "... src/ui/lector_aphelui/cleaner/Cleaner.i"
 	@echo "... src/ui/lector_aphelui/cleaner/Cleaner.s"

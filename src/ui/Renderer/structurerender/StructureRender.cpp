@@ -22,20 +22,21 @@ void StructureRender::processNode(const std::shared_ptr<Node>& node, float paren
     float currentX = parentX;
     float currentY = parentY;
 
-    // 1. Si es VisualNode, sumamos la posición relativa
+    // 1. Posición relativa
     auto visualNode = std::dynamic_pointer_cast<VisualNode>(node);
     if (visualNode) {
         currentX += visualNode->position.x;
         currentY += visualNode->position.y;
     }
 
-    // 2. Si es Space2D (o Window), genera sus 4 vértices y 6 índices
+    // 2. Generar geometría SOLO si es Space2D Y NO es el nodo Window raíz
     auto spaceNode = std::dynamic_pointer_cast<Space2D>(node);
-    if (spaceNode) {
+    if (spaceNode && node->getType() != "Window") {
+        // Opcional: si tus nodos tienen propiedad de color propia
         generateQuad(currentX, currentY, spaceNode->size.width, spaceNode->size.height);
     }
 
-    // 3. Recorrer los hijos recursivamente
+    // 3. Recorrer hijos
     for (const auto& child : node->children) {
         processNode(child, currentX, currentY);
     }

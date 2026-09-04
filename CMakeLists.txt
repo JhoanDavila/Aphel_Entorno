@@ -2,23 +2,25 @@ cmake_minimum_required(VERSION 3.10)
 project(aphel)
 
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# 1. Buscar librerías requeridas (GLEW y OpenGL)
+# 1. Buscar librerías requeridas (GLEW, OpenGL y GLFW)
 find_package(GLEW REQUIRED)
 find_package(OpenGL REQUIRED)
+find_package(glfw3 REQUIRED)
 
-# Include directories
+# Directorios de cabecera
 include_directories(
     src
     ${GLEW_INCLUDE_DIRS}
     ${OPENGL_INCLUDE_DIR}
 )
 
-# 2. Registrar todos los archivos fuente
+# 2. Registrar todos los archivos fuente (.cpp)
 set(SOURCES
     src/main.cpp
     
-    # Lector
+    # Lector AphelUI
     src/ui/lector_aphelui/cleaner/Cleaner.cpp
     src/ui/lector_aphelui/error_manager/ErrorManager.cpp
     src/ui/lector_aphelui/parser/Parser.cpp
@@ -34,13 +36,16 @@ set(SOURCES
     # Renderer
     src/ui/Renderer/paintrender/PaintRender.cpp
     src/ui/Renderer/structurerender/StructureRender.cpp
+    src/ui/Renderer/windowso/WindowSO.cpp
 )
 
+# 3. Definir ejecutable
 add_executable(aphel ${SOURCES})
 
-# 3. Enlazar las librerías al ejecutable (Esto resuelve los errores __glew*)
+# 4. Enlazar dependencias al ejecutable
 target_link_libraries(aphel
     PRIVATE
     GLEW::GLEW
     OpenGL::GL
+    glfw
 )

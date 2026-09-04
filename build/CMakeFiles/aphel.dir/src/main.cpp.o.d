@@ -174,7 +174,13 @@ CMakeFiles/aphel.dir/src/main.cpp.o: \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
- /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/structurerender/StructureRender.h \
- /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/paintrender/PaintRender.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/VisualNode.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/visual_node/../node/Node.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/windowso/WindowSO.h \
  /usr/include/GL/glew.h /usr/include/c++/13/cstdint /usr/include/GL/glu.h \
- /usr/include/GL/gl.h
+ /usr/include/GL/gl.h /usr/include/GLFW/glfw3.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/structurerender/StructureRender.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/paintrender/PaintRender.h

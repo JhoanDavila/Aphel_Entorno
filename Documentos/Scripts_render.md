@@ -75,3 +75,42 @@ metodos:
 - checkShaderErrors(...): función auxiliar para consultar el estado de compilación o enlace del pipeline de shaders.
 
 - cleanup(): elimina los objetos VAO, VBO, EBO y el programa de shaders de la VRAM de la GPU.
+## WindowSO.h
+
+se encarga de definir la interfaz para inicializar el contexto del sistema operativo, crear la ventana nativa a partir de las propiedades de un nodo WindowNode y gestionar el bucle de eventos.
+
+window: un puntero a la ventana nativa de la biblioteca GLFW (GLFWwindow*).
+
+- painter: una instancia de la clase PaintRender para orquestar los shaders, buffers y dibujado en la GPU.
+
+- structure: una instancia de la clase StructureRender para procesar el árbol de nodos y generar la geometría (RenderBatch).
+
+metodos:
+
+- WindowSO(): constructor por defecto que asigna nullptr al puntero de la ventana nativa.
+
+- ~WindowSO(): destructor que asegura la liberación de los recursos llamando a close().
+
+- init(...): recibe un WindowNode, extrae su tamaño y título para crear la ventana física con GLFW e inicializa GLEW junto con PaintRender.
+
+- startLoop(...): ejecuta el bucle de renderizado mientras la ventana siga abierta, limpiando el fondo con backgroundColor, convirtiendo la jerarquía de nodos en vértices y dibujándolos.
+
+- close(): destruye la ventana nativa de GLFW, libera la VRAM desde PaintRender y finaliza la biblioteca gráfica.
+
+## WindowSO.cpp
+
+contiene la implementación real de la creación de la ventana nativa y la orquestación del bucle principal de la aplicación.
+
+no define nuevos atributos, ejecuta la lógica del archivo WindowSO.h.
+
+metodos:
+
+- WindowSO(): constructor que asigna nullptr al puntero de la ventana nativa.
+
+- ~WindowSO(): destructor que invoca close() para liberar los recursos.
+
+- init(...): valida que el nodo recibido sea válido, inicializa GLFW, extrae size y title del objeto WindowNode, crea la ventana física, activa el contexto gráfico, arranca GLEW y establece la proyección ortográfica en PaintRender.
+
+- startLoop(...): ejecuta el bucle de refresco continuo en pantalla; aplica glClearColor mapeando las funciones rFloat(), gFloat(), bFloat(), aFloat() del WindowNode, solicita la geometría a StructureRender y la dibuja con PaintRender.
+
+- close(): libera los recursos asignados en la VRAM a través de PaintRender, destruye la ventana de GLFW y finaliza el entorno gráfico.
