@@ -7,9 +7,9 @@
 // Incluimos las cabeceras de lector_aphelg
 #include "Engine/lector_aphelg/Cleaner/Cleaner.h"
 #include "Engine/lector_aphelg/Tokenizer/Tokenizer.h"
+#include "Engine/lector_aphelg/Parser/Parser.h"
 #include "Engine/lector_aphelg/ErrorManager/ErrorManager.h"
 
-// Función auxiliar para imprimir el tipo de Token en texto
 std::string tokenTypeToString(AphelG::TokenType type) {
     switch (type) {
         case AphelG::TokenType::KEYWORD_FILE:   return "KEYWORD_FILE";
@@ -22,6 +22,14 @@ std::string tokenTypeToString(AphelG::TokenType type) {
         case AphelG::TokenType::END_OF_FILE:    return "END_OF_FILE";
         case AphelG::TokenType::UNKNOWN:        return "UNKNOWN";
         default:                                return "OTHER";
+    }
+}
+
+std::string instructionTypeToString(AphelG::InstructionType type) {
+    switch (type) {
+        case AphelG::InstructionType::FILE_DECLARATION: return "FILE_DECLARATION";
+        case AphelG::InstructionType::RENDER_COMMAND:   return "RENDER_COMMAND";
+        default:                                         return "UNKNOWN";
     }
 }
 
@@ -38,31 +46,34 @@ int main() {
     buffer << file.rdbuf();
     file.close();
 
-    // 1. Limpieza del código
+    // 1. Limpieza
     std::string cleanedScript = AphlgCleaner::clean(buffer.str());
-
-    std::cout << "--- CODIGO LIMPIO (.aphlg) ---" << std::endl;
-    std::cout << cleanedScript << std::endl;
-    std::cout << "-------------------------------" << std::endl;
 
     // 2. Tokenización
     AphelG::Tokenizer tokenizer(cleanedScript);
     std::vector<AphelG::Token> tokens = tokenizer.tokenize();
 
-    std::cout << "\n--- LISTA DE TOKENS OBTENIDOS ---" << std::endl;
-    for (const auto& token : tokens) {
-        std::cout << "[Linea " << token.line << ", Col " << token.column << "] "
-                  << "Tipo: " << tokenTypeToString(token.type)
-                  << " | Valor: \"" << token.value << "\"" << std::endl;
-    }
-    std::cout << "---------------------------------" << std::endl;
+    // 3. Análisis Sintáctico (Parser)
+    AphelG::Parser parser(tokens);
+    std::vector<AphelG::Instruction> ast = parser.parse();
 
-    // 3. Verificación de errores léxicos acumulados
+    // 4. Verificación e impresión de errores
     if (AphelG::ErrorManager::hasErrors()) {
-        std::cout << "\nSe encontraron errores durante la tokenizacion:" << std::endl;
+        std::cout << "\n--- ERRORES ENCONTRADOS ---" << std::endl;
         AphelG::ErrorManager::printErrors();
+        std::cout << "---------------------------" << std::endl;
     } else {
-        std::cout << "\nTokenizacion completada exitosamente sin errores." << std::endl;
+        std::cout << "\n--- ARBOL DE INSTRUCCIONES GENERADO (AST) ---" << std::endl;
+        for (const auto& inst : ast) {
+            std::cout << "[Linea " << inst.line << "] Tipo: " << instructionTypeToString(inst.type)
+                      << " | Alias: \"" << inst.alias << "\"";
+            if (inst.type == AphelG::InstructionType::FILE_DECLARATION) {
+                std::cout << " | Path: \"" << inst.path << "\"";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << "---------------------------------------------" << std::endl;
+        std::cout << "Analisis completado exitosamente sin errores sintacticos." << std::endl;
     }
 
     return 0;

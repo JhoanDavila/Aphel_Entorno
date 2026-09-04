@@ -162,4 +162,7 @@ CMakeFiles/aphel.dir/src/main.cpp.o: \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Cleaner/Cleaner.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Tokenizer/Tokenizer.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Tokenizer/Token.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Parser/Parser.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Parser/../Tokenizer/Token.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Parser/AST.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/ErrorManager/ErrorManager.h

@@ -336,7 +336,6 @@ CMakeFiles/aphel.dir/src/Engine/lector_aphelg/ErrorManager/ErrorManager.cpp.o: /
   /usr/lib/gcc/x86_64-linux-gnu/13/include/stddef.h
 
 CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o: /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp \
-  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/ErrorManager/ErrorManager.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Tokenizer/Token.h \
   /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Tokenizer/Tokenizer.h \
   /usr/include/alloca.h \
