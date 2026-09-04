@@ -1,5 +1,4 @@
 #include "Tokenizer.h"
-#include "../ErrorManager/ErrorManager.h"
 #include <cctype>
 #include <utility>
 
@@ -54,7 +53,7 @@ Token Tokenizer::makeString() {
     std::string value = source.substr(startPos, index - startPos);
 
     if (isAtEnd()) {
-        ErrorManager::logError(startLine, "Cadena de texto sin cerrar (se esperaba '\"').");
+        // La comilla no se cerró; devolvemos UNKNOWN para que el Parser lo gestione
         return Token(TokenType::UNKNOWN, std::move(value), startLine, startCol);
     }
 
@@ -73,6 +72,7 @@ Token Tokenizer::makeIdentifierOrKeyword() {
 
     std::string value = source.substr(startPos, index - startPos);
 
+    // Palabras clave reservadas
     if (value == "File") {
         return Token(TokenType::KEYWORD_FILE, std::move(value), startLine, startCol);
     }
@@ -80,12 +80,12 @@ Token Tokenizer::makeIdentifierOrKeyword() {
         return Token(TokenType::KEYWORD_RENDER, std::move(value), startLine, startCol);
     }
 
+    // Identificadores válidos (ej: variables, nombres o texto suelto)
     return Token(TokenType::IDENTIFIER, std::move(value), startLine, startCol);
 }
 
 std::vector<Token> Tokenizer::tokenize() {
     std::vector<Token> tokens;
-    // Reserva un tamaño estimado para minimizar realocaciones
     tokens.reserve(source.length() / 4 + 8);
 
     while (!isAtEnd()) {
@@ -116,7 +116,7 @@ std::vector<Token> Tokenizer::tokenize() {
         }
         else {
             std::string unknownChar(1, advance());
-            ErrorManager::logError(currentLine, "Carácter no reconocido: '" + unknownChar + "'");
+            // Carácter no reconocido se etiqueta como UNKNOWN
             tokens.push_back(Token(TokenType::UNKNOWN, std::move(unknownChar), currentLine, currentCol));
         }
     }
