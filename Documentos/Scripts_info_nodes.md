@@ -1,4 +1,4 @@
-# Descripcion de uso de scripts
+# Descripcion de los scripts de las entidades nodos
 
 ## Node.h
 
