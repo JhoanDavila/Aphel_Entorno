@@ -20,6 +20,9 @@ include_directories(
 set(SOURCES
     src/main.cpp
     
+    # Lector AphelG
+    src/Engine/lector_aphelg/Cleaner/Cleaner.cpp
+    
     # Lector AphelUI
     src/ui/lector_aphelui/cleaner/Cleaner.cpp
     src/ui/lector_aphelui/error_manager/ErrorManager.cpp

@@ -129,6 +129,30 @@ aphel/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/build
 .PHONY : aphel/fast
 
+src/Engine/lector_aphelg/Cleaner/Cleaner.o: src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.o
+.PHONY : src/Engine/lector_aphelg/Cleaner/Cleaner.o
+
+# target to build an object file
+src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.o
+.PHONY : src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.o
+
+src/Engine/lector_aphelg/Cleaner/Cleaner.i: src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.i
+.PHONY : src/Engine/lector_aphelg/Cleaner/Cleaner.i
+
+# target to preprocess a source file
+src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.i
+.PHONY : src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.i
+
+src/Engine/lector_aphelg/Cleaner/Cleaner.s: src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.s
+.PHONY : src/Engine/lector_aphelg/Cleaner/Cleaner.s
+
+# target to generate assembly for a file
+src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.s
+.PHONY : src/Engine/lector_aphelg/Cleaner/Cleaner.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -474,6 +498,9 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... aphel"
+	@echo "... src/Engine/lector_aphelg/Cleaner/Cleaner.o"
+	@echo "... src/Engine/lector_aphelg/Cleaner/Cleaner.i"
+	@echo "... src/Engine/lector_aphelg/Cleaner/Cleaner.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
