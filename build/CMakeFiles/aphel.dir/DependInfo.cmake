@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/main.cpp" "CMakeFiles/aphel.dir/src/main.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/main.cpp.o.d"
+  "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/paintrender/PaintRender.cpp" "CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/Renderer/paintrender/PaintRender.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/structurerender/StructureRender.cpp" "CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/Renderer/structurerender/StructureRender.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/cleaner/Cleaner.cpp" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/cleaner/Cleaner.cpp.o.d"
   "/home/jhoan/personal_deloved/Aphel_Entorno/src/ui/lector_aphelui/error_manager/ErrorManager.cpp" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o" "gcc" "CMakeFiles/aphel.dir/src/ui/lector_aphelui/error_manager/ErrorManager.cpp.o.d"

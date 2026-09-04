@@ -1,23 +1,46 @@
-cmake_minimum_required(VERSION 3.16)
-project(aphel CXX)
+cmake_minimum_required(VERSION 3.10)
+project(aphel)
 
-# Usar estándar C++17
 set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Buscar dinámicamente todos los archivos .cpp dentro de src/
-file(GLOB_RECURSE SOURCES "src/*.cpp")
+# 1. Buscar librerías requeridas (GLEW y OpenGL)
+find_package(GLEW REQUIRED)
+find_package(OpenGL REQUIRED)
 
-# Añadir la carpeta 'src' al path de includes para usar rutas como:
-# #include "ui/lector_aphelui/reader/AphluiReader.h"
-include_directories(src)
+# Include directories
+include_directories(
+    src
+    ${GLEW_INCLUDE_DIRS}
+    ${OPENGL_INCLUDE_DIR}
+)
 
-# Crear el ejecutable del proyecto
+# 2. Registrar todos los archivos fuente
+set(SOURCES
+    src/main.cpp
+    
+    # Lector
+    src/ui/lector_aphelui/cleaner/Cleaner.cpp
+    src/ui/lector_aphelui/error_manager/ErrorManager.cpp
+    src/ui/lector_aphelui/parser/Parser.cpp
+    src/ui/lector_aphelui/reader/AphluiReader.cpp
+    src/ui/lector_aphelui/tokenizer/Tokenizer.cpp
+    
+    # Nodos
+    src/ui/nodes/2dspace/2DSpace.cpp
+    src/ui/nodes/node/Node.cpp
+    src/ui/nodes/visual_node/VisualNode.cpp
+    src/ui/nodes/window/Window.cpp
+    
+    # Renderer
+    src/ui/Renderer/paintrender/PaintRender.cpp
+    src/ui/Renderer/structurerender/StructureRender.cpp
+)
+
 add_executable(aphel ${SOURCES})
 
-# Buscar y enlazar librerías gráficas (OpenGL, GLFW, GLEW) para cuando integremos el Renderer
-find_package(OpenGL REQUIRED)
-find_package(glfw3 REQUIRED)
-find_package(GLEW REQUIRED)
-
-target_link_libraries(aphel PRIVATE OpenGL::GL glfw GLEW::GLEW)
+# 3. Enlazar las librerías al ejecutable (Esto resuelve los errores __glew*)
+target_link_libraries(aphel
+    PRIVATE
+    GLEW::GLEW
+    OpenGL::GL
+)

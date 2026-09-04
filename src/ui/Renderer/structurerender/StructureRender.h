@@ -32,6 +32,4 @@ public:
     // Método principal: toma el nodo raíz y devuelve el lote geométrico
     RenderBatch buildGeometry(const std::shared_ptr<Node>& root);
 
-    // Método de depuración para ver en consola lo que se calculó
-    void debugPrintBatch(const RenderBatch& b) const;
 };
