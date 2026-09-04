@@ -30,10 +30,7 @@ PaintRender::~PaintRender() {
 }
 
 bool PaintRender::init() {
-    std::cout << "[PaintRender Debug] Creando buffers y Shaders..." << std::endl;
-
     if (!compileShaders()) {
-        std::cerr << "[PaintRender Error] Falló la compilación de Shaders." << std::endl;
         return false;
     }
 
@@ -58,8 +55,6 @@ bool PaintRender::init() {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ebo);
     glBindVertexArray(0);
 
-    checkGLError("PaintRender::init");
-    std::cout << "[PaintRender Debug] Buffers y Shaders configurados." << std::endl;
     return true;
 }
 
@@ -72,16 +67,14 @@ void PaintRender::setOrthographicProjection(float width, float height) {
     float farVal = 1.0f, nearVal = -1.0f;
 
     float ortho[16] = {
-        2.0f / (right - left), 0.0f,                  0.0f,                       0.0f,
-        0.0f,                  2.0f / (top - bottom), 0.0f,                       0.0f,
+        2.0f / (right - left), 0.0f,                   0.0f,                        0.0f,
+        0.0f,                  2.0f / (top - bottom), 0.0f,                        0.0f,
         0.0f,                  0.0f,                 -2.0f / (farVal - nearVal),  0.0f,
        -(right + left) / (right - left), -(top + bottom) / (top - bottom), -(farVal + nearVal) / (farVal - nearVal), 1.0f
     };
 
     projMatrixLocation = glGetUniformLocation(shaderProgram, "u_Projection");
     glUniformMatrix4fv(projMatrixLocation, 1, GL_FALSE, ortho);
-
-    checkGLError("setOrthographicProjection");
 }
 
 void PaintRender::render(const RenderBatch& batch) {
@@ -101,66 +94,38 @@ void PaintRender::render(const RenderBatch& batch) {
     glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(batch.indices.size()), GL_UNSIGNED_INT, 0);
 
     glBindVertexArray(0);
-    checkGLError("PaintRender::render");
-}
-
-void PaintRender::debugPrintGPUState(const RenderBatch& batch) const {
-    std::cout << "\n================ [DEBUG PAINT RENDER] ================" << std::endl;
-    std::cout << "  - ID VAO: " << vao << std::endl;
-    std::cout << "  - ID VBO: " << vbo << std::endl;
-    std::cout << "  - ID EBO: " << ebo << std::endl;
-    std::cout << "  - ID Shader Program: " << shaderProgram << std::endl;
-    std::cout << "  - Bytes en VBO: " << batch.vertices.size() * sizeof(Vertex) << " bytes" << std::endl;
-    std::cout << "  - Bytes en EBO: " << batch.indices.size() * sizeof(unsigned int) << " bytes" << std::endl;
-    std::cout << "  - Triángulos a pintar: " << batch.indices.size() / 3 << std::endl;
-    std::cout << "======================================================\n" << std::endl;
 }
 
 bool PaintRender::compileShaders() {
     GLuint vs = glCreateShader(GL_VERTEX_SHADER);
     glShaderSource(vs, 1, &vertexShaderSource, NULL);
     glCompileShader(vs);
-    checkShaderErrors(vs, "VERTEX");
 
     GLuint fs = glCreateShader(GL_FRAGMENT_SHADER);
     glShaderSource(fs, 1, &fragmentShaderSource, NULL);
     glCompileShader(fs);
-    checkShaderErrors(fs, "FRAGMENT");
 
     shaderProgram = glCreateProgram();
     glAttachShader(shaderProgram, vs);
     glAttachShader(shaderProgram, fs);
     glLinkProgram(shaderProgram);
-    checkShaderErrors(shaderProgram, "PROGRAM");
 
     glDeleteShader(vs);
     glDeleteShader(fs);
 
-    return shaderProgram != 0;
+    // Validar si el Linking fue exitoso
+    GLint success = 0;
+    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+    return success == GL_TRUE;
 }
 
 void PaintRender::checkShaderErrors(GLuint shader, const std::string& type) {
+    // Método auxiliar (mantenido para compatibilidad con la cabecera)
     GLint success;
-    GLchar infoLog[1024];
     if (type != "PROGRAM") {
         glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
-        if (!success) {
-            glGetShaderInfoLog(shader, 1024, NULL, infoLog);
-            std::cerr << "[Shader Error - " << type << "]: " << infoLog << std::endl;
-        }
     } else {
         glGetProgramiv(shader, GL_LINK_STATUS, &success);
-        if (!success) {
-            glGetProgramInfoLog(shader, 1024, NULL, infoLog);
-            std::cerr << "[Shader Link Error]: " << infoLog << std::endl;
-        }
-    }
-}
-
-void PaintRender::checkGLError(const std::string& location) const {
-    GLenum err;
-    while ((err = glGetError()) != GL_NO_ERROR) {
-        std::cerr << "[OpenGL Error] (" << location << "): 0x" << std::hex << err << std::dec << std::endl;
     }
 }
 
