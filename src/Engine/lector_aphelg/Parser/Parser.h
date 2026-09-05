@@ -20,14 +20,19 @@ private:
     bool match(TokenType type);
     bool isAtEnd() const;
 
+    // Métodos auxiliares de validación y conversión
+    Token consume(TokenType type, const std::string& errorMessage);
+    DataType parseDataType(TokenType type);
+
     // Métodos de análisis sintáctico (Gramática)
     Instruction parseFileDeclaration();
     Instruction parseRenderCommand();
+    Instruction parseDataDeclaration(); // <-- NUEVO: Procesa la sintaxis 'data'
 
 public:
     explicit Parser(std::vector<Token> tokens);
 
-    // Transforma la lista de tokens en la secuencia de instrucciones
+    // Transforma la lista de tokens en la secuencia de instrucciones (AST)
     std::vector<Instruction> parse();
 };
 

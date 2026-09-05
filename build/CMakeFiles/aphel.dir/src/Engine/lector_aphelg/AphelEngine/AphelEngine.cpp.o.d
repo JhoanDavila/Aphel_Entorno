@@ -166,6 +166,12 @@ CMakeFiles/aphel.dir/src/Engine/lector_aphelg/AphelEngine/AphelEngine.cpp.o: \
  /usr/include/c++/13/bits/enable_special_members.h \
  /usr/include/c++/13/bits/node_handle.h \
  /usr/include/c++/13/bits/erase_if.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../Cleaner/Cleaner.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../Tokenizer/Tokenizer.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../Tokenizer/Token.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../Parser/Parser.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../Parser/../Tokenizer/Token.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../Parser/AST.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../PathResolver/PathResolver.h \
  /usr/include/c++/13/filesystem /usr/include/c++/13/bits/fs_fwd.h \
  /usr/include/c++/13/system_error \
@@ -212,4 +218,8 @@ CMakeFiles/aphel.dir/src/Engine/lector_aphelg/AphelEngine/AphelEngine.cpp.o: \
  /usr/include/GLFW/glfw3.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/structurerender/StructureRender.h \
  /usr/include/c++/13/iostream \
- /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/paintrender/PaintRender.h
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/Renderer/paintrender/PaintRender.h \
+ /usr/include/c++/13/fstream \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/basic_file.h \
+ /usr/include/x86_64-linux-gnu/c++/13/bits/c++io.h \
+ /usr/include/c++/13/bits/fstream.tcc

@@ -61,6 +61,41 @@ Token Tokenizer::makeString() {
     return Token(TokenType::STRING_LITERAL, std::move(value), startLine, startCol);
 }
 
+Token Tokenizer::makeNumber() {
+    int startLine = line;
+    int startCol = column;
+    size_t startPos = index;
+
+    // Procesa el signo negativo opcional
+    if (peek() == '-') {
+        advance();
+    }
+
+    bool isFloat = false;
+
+    while (!isAtEnd()) {
+        char c = peek();
+        if (std::isdigit(c)) {
+            advance();
+        } else if (c == '.' && !isFloat) {
+            // Verifica que el siguiente carácter sea un dígito para confirmar que es un flotante válido
+            if (index + 1 < source.length() && std::isdigit(source[index + 1])) {
+                isFloat = true;
+                advance(); // Consume el punto
+            } else {
+                break;
+            }
+        } else {
+            break;
+        }
+    }
+
+    std::string value = source.substr(startPos, index - startPos);
+    TokenType type = isFloat ? TokenType::FLOAT_LITERAL : TokenType::INT_LITERAL;
+
+    return Token(type, std::move(value), startLine, startCol);
+}
+
 Token Tokenizer::makeIdentifierOrKeyword() {
     int startLine = line;
     int startCol = column;
@@ -72,15 +107,26 @@ Token Tokenizer::makeIdentifierOrKeyword() {
 
     std::string value = source.substr(startPos, index - startPos);
 
-    // Palabras clave reservadas
-    if (value == "File") {
-        return Token(TokenType::KEYWORD_FILE, std::move(value), startLine, startCol);
-    }
-    if (value == "Render") {
-        return Token(TokenType::KEYWORD_RENDER, std::move(value), startLine, startCol);
+    // Palabras clave de control
+    if (value == "File") return Token(TokenType::KEYWORD_FILE, std::move(value), startLine, startCol);
+    if (value == "Render") return Token(TokenType::KEYWORD_RENDER, std::move(value), startLine, startCol);
+
+    // Keyword de declaración de variables
+    if (value == "data") return Token(TokenType::KEYWORD_DATA, std::move(value), startLine, startCol);
+
+    // Tipos de datos
+    if (value == "txt") return Token(TokenType::TYPE_TXT, std::move(value), startLine, startCol);
+    if (value == "int") return Token(TokenType::TYPE_INT, std::move(value), startLine, startCol);
+    if (value == "dbl") return Token(TokenType::TYPE_DBL, std::move(value), startLine, startCol);
+    if (value == "nat") return Token(TokenType::TYPE_NAT, std::move(value), startLine, startCol);
+    if (value == "bool") return Token(TokenType::TYPE_BOOL, std::move(value), startLine, startCol);
+
+    // Literales booleanos
+    if (value == "true" || value == "false") {
+        return Token(TokenType::BOOL_LITERAL, std::move(value), startLine, startCol);
     }
 
-    // Identificadores válidos (ej: variables, nombres o texto suelto)
+    // Identificadores (nombres de variables o alias de recursos)
     return Token(TokenType::IDENTIFIER, std::move(value), startLine, startCol);
 }
 
@@ -103,6 +149,14 @@ std::vector<Token> Tokenizer::tokenize() {
             advance();
             tokens.push_back(Token(TokenType::ASSIGN, "=", currentLine, currentCol));
         }
+        else if (c == ':') {
+            advance();
+            tokens.push_back(Token(TokenType::COLON, ":", currentLine, currentCol));
+        }
+        else if (c == ';') {
+            advance();
+            tokens.push_back(Token(TokenType::SEMICOLON, ";", currentLine, currentCol));
+        }
         else if (c == '(') {
             advance();
             tokens.push_back(Token(TokenType::LPAREN, "(", currentLine, currentCol));
@@ -111,12 +165,14 @@ std::vector<Token> Tokenizer::tokenize() {
             advance();
             tokens.push_back(Token(TokenType::RPAREN, ")", currentLine, currentCol));
         }
+        else if (std::isdigit(c) || (c == '-' && index + 1 < source.length() && std::isdigit(source[index + 1]))) {
+            tokens.push_back(makeNumber());
+        }
         else if (std::isalpha(c) || c == '_') {
             tokens.push_back(makeIdentifierOrKeyword());
         }
         else {
             std::string unknownChar(1, advance());
-            // Carácter no reconocido se etiqueta como UNKNOWN
             tokens.push_back(Token(TokenType::UNKNOWN, std::move(unknownChar), currentLine, currentCol));
         }
     }

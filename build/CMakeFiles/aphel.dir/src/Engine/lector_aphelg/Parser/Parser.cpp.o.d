@@ -122,4 +122,8 @@ CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Parser/Parser.cpp.o: \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
  /usr/include/c++/13/bits/vector.tcc \
- /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Parser/../ErrorManager/ErrorManager.h
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/Parser/../ErrorManager/ErrorManager.h \
+ /usr/include/c++/13/stdexcept /usr/include/c++/13/exception \
+ /usr/include/c++/13/bits/exception_ptr.h \
+ /usr/include/c++/13/bits/cxxabi_init_exception.h \
+ /usr/include/c++/13/typeinfo /usr/include/c++/13/bits/nested_exception.h

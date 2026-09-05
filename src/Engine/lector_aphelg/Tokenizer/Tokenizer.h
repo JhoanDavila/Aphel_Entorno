@@ -22,6 +22,7 @@ private:
 
     // Generadores de tokens específicos
     Token makeString();
+    Token makeNumber();                  // <-- NUEVO: Procesa enteros y flotantes (positivos y negativos)
     Token makeIdentifierOrKeyword();
 
 public:

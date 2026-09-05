@@ -2,4 +2,4 @@ Window:
     .position: (0,0)
     .size: (1500,600)
     .title: "app_example"
-    .backgroundcolor: rgb(223, 223, 223)
+    .backgroundcolor: rgb(198, 185, 223)

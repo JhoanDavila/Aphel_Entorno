@@ -3,6 +3,4 @@
 comentario miltilinea
 \\\
 
-File ventana = "--;src;ui;Aphel_Ui;example.aphlui"
-
-Render (ventana)
+data nombre : txt : 8 = "juan"
