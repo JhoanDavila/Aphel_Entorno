@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Parser/Parser.cpp.o.d"
   "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.o"
   "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.o.d"
+  "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.o"
+  "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.o.d"
   "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o"
   "CMakeFiles/aphel.dir/src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o.d"
   "CMakeFiles/aphel.dir/src/main.cpp.o"

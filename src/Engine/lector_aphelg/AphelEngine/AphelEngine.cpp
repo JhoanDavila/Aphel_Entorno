@@ -46,7 +46,7 @@ bool AphelEngine::runScript(const std::string& filePath) {
     AphelEngine engine;
     engine.execute(ast);
 
-    // Validar errores de ejecución (rutas no encontradas, aliases inválidos)
+    // Validar errores de ejecución (rutas no encontradas, desbordamientos de memoria, etc.)
     if (ErrorManager::hasErrors()) {
         std::cout << "--- ERRORES EN TIEMPO DE EJECUCIÓN ---" << std::endl;
         ErrorManager::printErrors();
@@ -57,10 +57,8 @@ bool AphelEngine::runScript(const std::string& filePath) {
 }
 
 void AphelEngine::executeFileDeclaration(const Instruction& inst) {
-    // Resuelve la ruta utilizando la ruta base del script para mayor precisión
     std::string realPath = PathResolver::resolve(inst.path);
 
-    // Carga el árbol de nodos del archivo .aphlui
     std::shared_ptr<Node> uiRoot = AphluiReader::loadFromFile(realPath);
 
     if (!uiRoot) {
@@ -78,15 +76,28 @@ void AphelEngine::executeRenderCommand(const Instruction& inst) {
         return;
     }
 
-    // Instanciación e invocación del RenderEngine
     RenderEngine renderer;
     if (!renderer.init(it->second)) {
         ErrorManager::logError(inst.line, "Error de Renderizado: No se pudo inicializar la ventana para '" + inst.alias + "'");
         return;
     }
 
-    // Inicia el bucle de renderizado (Game/UI Loop)
     renderer.run(it->second);
+}
+
+void AphelEngine::executeDataDeclaration(const Instruction& inst) {
+    std::string errorMessage;
+    if (!symbolTable.declareVariable(inst, errorMessage)) {
+        ErrorManager::logError(inst.line, errorMessage);
+    }
+}
+
+// NUEVO: Método para ejecutar reasignación de variables
+void AphelEngine::executeVariableAssignment(const Instruction& inst) {
+    std::string errorMessage;
+    if (!symbolTable.assignVariable(inst, errorMessage)) {
+        ErrorManager::logError(inst.line, errorMessage);
+    }
 }
 
 void AphelEngine::execute(const std::vector<Instruction>& instructions) {
@@ -96,6 +107,12 @@ void AphelEngine::execute(const std::vector<Instruction>& instructions) {
         }
         else if (inst.type == InstructionType::RENDER_COMMAND) {
             executeRenderCommand(inst);
+        }
+        else if (inst.type == InstructionType::DATA_DECLARATION) {
+            executeDataDeclaration(inst);
+        }
+        else if (inst.type == InstructionType::VARIABLE_ASSIGNMENT) { // NUEVO: Evaluador de reasignaciones
+            executeVariableAssignment(inst);
         }
     }
 }

@@ -2,38 +2,32 @@
 #define APHELG_AST_H
 
 #include <string>
-#include <cstddef>
 
 namespace AphelG {
 
 enum class InstructionType {
     FILE_DECLARATION,
     RENDER_COMMAND,
-    DATA_DECLARATION   // Declaración de variables (data nombre : tipo : size = value)
+    DATA_DECLARATION,
+    VARIABLE_ASSIGNMENT // <--- Reajuste de variable existente
 };
 
 enum class DataType {
-    TXT,   // Cadenas de texto
-    INT,   // Enteros con signo
-    DBL,   // Números reales / punto flotante
-    NAT,   // Números naturales (enteros positivos)
-    BOOL,  // Booleanos
+    TXT,
+    INT,
+    DBL,
+    NAT,
+    BOOL,
     NONE
 };
 
 struct Instruction {
     InstructionType type;
-    
-    // Campos para FILE_DECLARATION y RENDER_COMMAND
-    std::string alias;        // Ej: "ventana"
-    std::string path;         // Ej: "--;--;ui;Aphel_Ui;example.aphlui"
-
-    // Campos para DATA_DECLARATION (data nombre : tipo : size = value)
-    std::string varName;      // Nombre de la variable (ej: "usuario", "vidas")
-    DataType dataType = DataType::NONE; // Tipo asignado (TXT, INT, DBL, NAT, BOOL)
-    size_t byteSize = 0;      // Tamaño explícito en bytes (ej: 32, 4, 8, 2, 1)
-    std::string rawValue;     // Valor literal inicial en formato texto para ser interpretado
-
+    std::string alias;      // Nombre de recurso o alias de archivo
+    std::string path;       // Ruta al archivo .aphlui
+    std::string varName;    // Nombre de variable
+    DataType dataType;      // Tipo de dato
+    std::string rawValue;   // Valor asignado en texto
     int line;
     int column;
 };

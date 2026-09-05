@@ -59,24 +59,24 @@ Instruction Parser::parseFileDeclaration() {
 
     if (!match(TokenType::IDENTIFIER)) {
         ErrorManager::logError(peek().line, "Se esperaba un nombre de identificador después de 'File'.");
-        return { InstructionType::FILE_DECLARATION, "", "", "", DataType::NONE, 0, "", keywordToken.line, keywordToken.column };
+        return { InstructionType::FILE_DECLARATION, "", "", "", DataType::NONE, "", keywordToken.line, keywordToken.column };
     }
     std::string alias = previous().value;
 
     if (!match(TokenType::ASSIGN)) {
         ErrorManager::logError(peek().line, "Se esperaba '=' después del nombre del archivo '" + alias + "'.");
-        return { InstructionType::FILE_DECLARATION, alias, "", "", DataType::NONE, 0, "", keywordToken.line, keywordToken.column };
+        return { InstructionType::FILE_DECLARATION, alias, "", "", DataType::NONE, "", keywordToken.line, keywordToken.column };
     }
 
     if (!match(TokenType::STRING_LITERAL)) {
         ErrorManager::logError(peek().line, "Se esperaba una ruta entre comillas después de '='.");
-        return { InstructionType::FILE_DECLARATION, alias, "", "", DataType::NONE, 0, "", keywordToken.line, keywordToken.column };
+        return { InstructionType::FILE_DECLARATION, alias, "", "", DataType::NONE, "", keywordToken.line, keywordToken.column };
     }
     std::string path = previous().value;
 
-    match(TokenType::SEMICOLON); // Consumir ';' opcional si existe
+    match(TokenType::SEMICOLON);
 
-    return { InstructionType::FILE_DECLARATION, alias, path, "", DataType::NONE, 0, "", keywordToken.line, keywordToken.column };
+    return { InstructionType::FILE_DECLARATION, alias, path, "", DataType::NONE, "", keywordToken.line, keywordToken.column };
 }
 
 Instruction Parser::parseRenderCommand() {
@@ -84,23 +84,23 @@ Instruction Parser::parseRenderCommand() {
 
     if (!match(TokenType::LPAREN)) {
         ErrorManager::logError(peek().line, "Se esperaba '(' después de 'Render'.");
-        return { InstructionType::RENDER_COMMAND, "", "", "", DataType::NONE, 0, "", keywordToken.line, keywordToken.column };
+        return { InstructionType::RENDER_COMMAND, "", "", "", DataType::NONE, "", keywordToken.line, keywordToken.column };
     }
 
     if (!match(TokenType::IDENTIFIER)) {
         ErrorManager::logError(peek().line, "Se esperaba el identificador del recurso dentro de 'Render(...)'.");
-        return { InstructionType::RENDER_COMMAND, "", "", "", DataType::NONE, 0, "", keywordToken.line, keywordToken.column };
+        return { InstructionType::RENDER_COMMAND, "", "", "", DataType::NONE, "", keywordToken.line, keywordToken.column };
     }
     std::string alias = previous().value;
 
     if (!match(TokenType::RPAREN)) {
         ErrorManager::logError(peek().line, "Se esperaba ')' para cerrar la instrucción 'Render(" + alias + ")'.");
-        return { InstructionType::RENDER_COMMAND, alias, "", "", DataType::NONE, 0, "", keywordToken.line, keywordToken.column };
+        return { InstructionType::RENDER_COMMAND, alias, "", "", DataType::NONE, "", keywordToken.line, keywordToken.column };
     }
 
-    match(TokenType::SEMICOLON); // Consumir ';' opcional si existe
+    match(TokenType::SEMICOLON);
 
-    return { InstructionType::RENDER_COMMAND, alias, "", "", DataType::NONE, 0, "", keywordToken.line, keywordToken.column };
+    return { InstructionType::RENDER_COMMAND, alias, "", "", DataType::NONE, "", keywordToken.line, keywordToken.column };
 }
 
 Instruction Parser::parseDataDeclaration() {
@@ -117,56 +117,167 @@ Instruction Parser::parseDataDeclaration() {
     }
     inst.varName = previous().value;
 
-    // 2. Primer separador ':'
-    if (!match(TokenType::COLON)) {
-        ErrorManager::logError(peek().line, "Se esperaba ':' después del nombre de la variable '" + inst.varName + "'.");
-        return inst;
-    }
-
-    // 3. Tipo de dato (txt, int, dbl, nat, bool)
-    if (match(TokenType::TYPE_TXT) || match(TokenType::TYPE_INT) || 
-        match(TokenType::TYPE_DBL) || match(TokenType::TYPE_NAT) || match(TokenType::TYPE_BOOL)) {
-        inst.dataType = parseDataType(previous().type);
+    // 2. Comprobar si especifica tipo explícito con ':'
+    if (match(TokenType::COLON)) {
+        if (match(TokenType::TYPE_TXT) || match(TokenType::TYPE_INT) || 
+            match(TokenType::TYPE_DBL) || match(TokenType::TYPE_NAT) || match(TokenType::TYPE_BOOL)) {
+            inst.dataType = parseDataType(previous().type);
+        } else {
+            ErrorManager::logError(peek().line, "Tipo de dato no válido después de ':'. Se esperaba txt, int, dbl, nat o bool.");
+            return inst;
+        }
     } else {
-        ErrorManager::logError(peek().line, "Tipo de dato no válido después de ':'. Se esperaba txt, int, dbl, nat o bool.");
-        return inst;
+        inst.dataType = DataType::NONE; 
     }
 
-    // 4. Segundo separador ':'
-    if (!match(TokenType::COLON)) {
-        ErrorManager::logError(peek().line, "Se esperaba ':' después del tipo de dato.");
-        return inst;
-    }
-
-    // 5. Tamaño en bytes (size)
-    if (!match(TokenType::INT_LITERAL)) {
-        ErrorManager::logError(peek().line, "Se esperaba un entero para especificar el tamaño en bytes.");
-        return inst;
-    }
-    try {
-        inst.byteSize = static_cast<size_t>(std::stoul(previous().value));
-    } catch (...) {
-        ErrorManager::logError(previous().line, "Tamaño en bytes no válido: '" + previous().value + "'");
-        return inst;
-    }
-
-    // 6. Operador asignación '='
+    // 3. Operador de asignación '='
     if (!match(TokenType::ASSIGN)) {
-        ErrorManager::logError(peek().line, "Se esperaba '=' después de especificar el tamaño en bytes.");
+        ErrorManager::logError(peek().line, "Se esperaba '=' después de la variable '" + inst.varName + "'.");
         return inst;
     }
 
-    // 7. Valor asignado
-    if (match(TokenType::STRING_LITERAL) || match(TokenType::INT_LITERAL) || 
-        match(TokenType::FLOAT_LITERAL)  || match(TokenType::BOOL_LITERAL) || 
-        match(TokenType::IDENTIFIER)) {
-        inst.rawValue = previous().value;
+    // 4. Inferencia o Validación del valor asignado
+    Token valueToken = advance();
+    
+    if (inst.dataType == DataType::NONE) {
+        switch (valueToken.type) {
+            case TokenType::STRING_LITERAL: inst.dataType = DataType::TXT; break;
+            case TokenType::INT_LITERAL:    inst.dataType = DataType::INT; break;
+            case TokenType::FLOAT_LITERAL:  inst.dataType = DataType::DBL; break;
+            case TokenType::BOOL_LITERAL:   inst.dataType = DataType::BOOL; break;
+            default:
+                ErrorManager::logError(valueToken.line, "No se pudo inferir el tipo de dato para '" + valueToken.value + "'.");
+                return inst;
+        }
     } else {
-        ErrorManager::logError(peek().line, "Se esperaba un valor literal válido después de '='.");
+        bool isValidValue = false;
+
+        switch (inst.dataType) {
+            case DataType::TXT:
+                isValidValue = (valueToken.type == TokenType::STRING_LITERAL);
+                break;
+            case DataType::INT:
+                // Rechaza FLOAT_LITERAL estrictamente
+                isValidValue = (valueToken.type == TokenType::INT_LITERAL);
+                break;
+            case DataType::DBL:
+                isValidValue = (valueToken.type == TokenType::FLOAT_LITERAL || valueToken.type == TokenType::INT_LITERAL);
+                break;
+            case DataType::NAT:
+                // Rechaza FLOAT_LITERAL estrictamente
+                if (valueToken.type == TokenType::INT_LITERAL) {
+                    try {
+                        long long val = std::stoll(valueToken.value);
+                        isValidValue = (val >= 0);
+                    } catch (...) {
+                        isValidValue = false;
+                    }
+                }
+                break;
+            case DataType::BOOL:
+                isValidValue = (valueToken.type == TokenType::BOOL_LITERAL);
+                break;
+            default:
+                isValidValue = false;
+                break;
+        }
+
+        if (valueToken.type == TokenType::IDENTIFIER) {
+            isValidValue = true;
+        }
+
+        if (!isValidValue) {
+            ErrorManager::logError(
+                valueToken.line, 
+                "Error de Tipo: El valor '" + valueToken.value + "' no coincide con el tipo de dato especificado."
+            );
+            return inst;
+        }
+    }
+
+    inst.rawValue = valueToken.value;
+    match(TokenType::SEMICOLON);
+
+    return inst;
+}
+
+Instruction Parser::parseVariableAssignment() {
+    Token varToken = previous(); // Token IDENTIFIER
+    Instruction inst;
+    inst.type = InstructionType::VARIABLE_ASSIGNMENT;
+    inst.varName = varToken.value;
+    inst.line = varToken.line;
+    inst.column = varToken.column;
+
+    // 1. Comprobar si redefine tipo explícitamente con ':'
+    if (match(TokenType::COLON)) {
+        if (match(TokenType::TYPE_TXT) || match(TokenType::TYPE_INT) || 
+            match(TokenType::TYPE_DBL) || match(TokenType::TYPE_NAT) || match(TokenType::TYPE_BOOL)) {
+            inst.dataType = parseDataType(previous().type);
+        } else {
+            ErrorManager::logError(peek().line, "Tipo no válido en reasignación. Se esperaba txt, int, dbl, nat o bool.");
+            return inst;
+        }
+    } else {
+        inst.dataType = DataType::NONE; 
+    }
+
+    // 2. Operador '='
+    if (!match(TokenType::ASSIGN)) {
+        ErrorManager::logError(peek().line, "Se esperaba '=' en el reajuste de la variable '" + inst.varName + "'.");
         return inst;
     }
 
-    // 8. Separador ';' opcional al final
+    // 3. Obtener el valor asignado y validar sintácticamente si hubo redeterminación de tipo
+    Token valueToken = advance();
+
+    if (inst.dataType != DataType::NONE) {
+        bool isValidValue = false;
+
+        switch (inst.dataType) {
+            case DataType::TXT:
+                isValidValue = (valueToken.type == TokenType::STRING_LITERAL);
+                break;
+            case DataType::INT:
+                // Rechaza FLOAT_LITERAL estrictamente
+                isValidValue = (valueToken.type == TokenType::INT_LITERAL);
+                break;
+            case DataType::DBL:
+                isValidValue = (valueToken.type == TokenType::FLOAT_LITERAL || valueToken.type == TokenType::INT_LITERAL);
+                break;
+            case DataType::NAT:
+                // Rechaza FLOAT_LITERAL estrictamente
+                if (valueToken.type == TokenType::INT_LITERAL) {
+                    try {
+                        long long val = std::stoll(valueToken.value);
+                        isValidValue = (val >= 0);
+                    } catch (...) {
+                        isValidValue = false;
+                    }
+                }
+                break;
+            case DataType::BOOL:
+                isValidValue = (valueToken.type == TokenType::BOOL_LITERAL);
+                break;
+            default:
+                isValidValue = false;
+                break;
+        }
+
+        if (valueToken.type == TokenType::IDENTIFIER) {
+            isValidValue = true;
+        }
+
+        if (!isValidValue) {
+            ErrorManager::logError(
+                valueToken.line, 
+                "Error de Tipo en reasignación: El valor '" + valueToken.value + "' no coincide con el tipo especificado."
+            );
+            return inst;
+        }
+    }
+
+    inst.rawValue = valueToken.value;
     match(TokenType::SEMICOLON);
 
     return inst;
@@ -184,6 +295,9 @@ std::vector<Instruction> Parser::parse() {
         }
         else if (match(TokenType::KEYWORD_DATA)) {
             instructions.push_back(parseDataDeclaration());
+        }
+        else if (match(TokenType::IDENTIFIER)) { 
+            instructions.push_back(parseVariableAssignment());
         }
         else {
             Token badToken = advance();

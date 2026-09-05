@@ -26,7 +26,8 @@ set(SOURCES
     src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp
     src/Engine/lector_aphelg/Parser/Parser.cpp
     src/Engine/lector_aphelg/PathResolver/PathResolver.cpp
-    src/Engine/lector_aphelg/AphelEngine/AphelEngine.cpp # <-- AÑADIDO
+    src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp # <-- AÑADIDO
+    src/Engine/lector_aphelg/AphelEngine/AphelEngine.cpp
 
     # Lector AphelUI
     src/ui/lector_aphelui/cleaner/Cleaner.cpp

@@ -249,6 +249,30 @@ src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.s
 .PHONY : src/Engine/lector_aphelg/PathResolver/PathResolver.cpp.s
 
+src/Engine/lector_aphelg/SymbolTable/SymbolTable.o: src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.o
+.PHONY : src/Engine/lector_aphelg/SymbolTable/SymbolTable.o
+
+# target to build an object file
+src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.o
+.PHONY : src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.o
+
+src/Engine/lector_aphelg/SymbolTable/SymbolTable.i: src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.i
+.PHONY : src/Engine/lector_aphelg/SymbolTable/SymbolTable.i
+
+# target to preprocess a source file
+src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.i
+.PHONY : src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.i
+
+src/Engine/lector_aphelg/SymbolTable/SymbolTable.s: src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.s
+.PHONY : src/Engine/lector_aphelg/SymbolTable/SymbolTable.s
+
+# target to generate assembly for a file
+src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aphel.dir/build.make CMakeFiles/aphel.dir/src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.s
+.PHONY : src/Engine/lector_aphelg/SymbolTable/SymbolTable.cpp.s
+
 src/Engine/lector_aphelg/Tokenizer/Tokenizer.o: src/Engine/lector_aphelg/Tokenizer/Tokenizer.cpp.o
 .PHONY : src/Engine/lector_aphelg/Tokenizer/Tokenizer.o
 
@@ -633,6 +657,9 @@ help:
 	@echo "... src/Engine/lector_aphelg/PathResolver/PathResolver.o"
 	@echo "... src/Engine/lector_aphelg/PathResolver/PathResolver.i"
 	@echo "... src/Engine/lector_aphelg/PathResolver/PathResolver.s"
+	@echo "... src/Engine/lector_aphelg/SymbolTable/SymbolTable.o"
+	@echo "... src/Engine/lector_aphelg/SymbolTable/SymbolTable.i"
+	@echo "... src/Engine/lector_aphelg/SymbolTable/SymbolTable.s"
 	@echo "... src/Engine/lector_aphelg/Tokenizer/Tokenizer.o"
 	@echo "... src/Engine/lector_aphelg/Tokenizer/Tokenizer.i"
 	@echo "... src/Engine/lector_aphelg/Tokenizer/Tokenizer.s"

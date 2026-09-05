@@ -117,7 +117,18 @@ CMakeFiles/aphel.dir/src/Engine/lector_aphelg/AphelEngine/AphelEngine.cpp.o: \
  /usr/include/c++/13/bits/memory_resource.h /usr/include/c++/13/cstddef \
  /usr/include/c++/13/bits/uses_allocator.h \
  /usr/include/c++/13/bits/uses_allocator_args.h /usr/include/c++/13/tuple \
- /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../../../ui/nodes/node/Node.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../SymbolTable/SymbolTable.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../SymbolTable/../Parser/AST.h \
+ /usr/include/c++/13/unordered_map \
+ /usr/include/c++/13/bits/unordered_map.h \
+ /usr/include/c++/13/bits/hashtable.h \
+ /usr/include/c++/13/bits/hashtable_policy.h \
+ /usr/include/c++/13/ext/aligned_buffer.h \
+ /usr/include/c++/13/bits/enable_special_members.h \
+ /usr/include/c++/13/bits/node_handle.h \
+ /usr/include/c++/13/bits/erase_if.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../../../ui/lector_aphelui/reader/AphluiReader.h \
+ /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.h \
  /usr/include/c++/13/vector /usr/include/c++/13/bits/stl_uninitialized.h \
  /usr/include/c++/13/bits/stl_vector.h \
  /usr/include/c++/13/bits/stl_bvector.h \
@@ -132,7 +143,6 @@ CMakeFiles/aphel.dir/src/Engine/lector_aphelg/AphelEngine/AphelEngine.cpp.o: \
  /usr/include/c++/13/bits/shared_ptr.h \
  /usr/include/c++/13/bits/shared_ptr_base.h /usr/include/c++/13/typeinfo \
  /usr/include/c++/13/bits/allocated_ptr.h \
- /usr/include/c++/13/ext/aligned_buffer.h \
  /usr/include/c++/13/ext/atomicity.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/gthr-default.h \
@@ -159,13 +169,6 @@ CMakeFiles/aphel.dir/src/Engine/lector_aphelg/AphelEngine/AphelEngine.cpp.o: \
  /usr/include/c++/13/backward/auto_ptr.h \
  /usr/include/c++/13/pstl/glue_memory_defs.h \
  /usr/include/c++/13/pstl/execution_defs.h \
- /usr/include/c++/13/unordered_map \
- /usr/include/c++/13/bits/unordered_map.h \
- /usr/include/c++/13/bits/hashtable.h \
- /usr/include/c++/13/bits/hashtable_policy.h \
- /usr/include/c++/13/bits/enable_special_members.h \
- /usr/include/c++/13/bits/node_handle.h \
- /usr/include/c++/13/bits/erase_if.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../Cleaner/Cleaner.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../Tokenizer/Tokenizer.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../Tokenizer/Token.h \
@@ -206,8 +209,6 @@ CMakeFiles/aphel.dir/src/Engine/lector_aphelg/AphelEngine/AphelEngine.cpp.o: \
  /usr/include/c++/13/bits/sstream.tcc /usr/include/c++/13/codecvt \
  /usr/include/c++/13/bits/fs_dir.h /usr/include/c++/13/bits/fs_ops.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../ErrorManager/ErrorManager.h \
- /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../../../ui/lector_aphelui/reader/AphluiReader.h \
- /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/node/Node.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/Engine/lector_aphelg/AphelEngine/../../../ui/Renderer/renderengine/RenderEngine.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/window/Window.h \
  /home/jhoan/personal_deloved/Aphel_Entorno/src/ui/nodes/2dspace/2DSpace.h \

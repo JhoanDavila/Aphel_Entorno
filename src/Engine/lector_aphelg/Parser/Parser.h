@@ -27,7 +27,8 @@ private:
     // Métodos de análisis sintáctico (Gramática)
     Instruction parseFileDeclaration();
     Instruction parseRenderCommand();
-    Instruction parseDataDeclaration(); // <-- NUEVO: Procesa la sintaxis 'data'
+    Instruction parseDataDeclaration(); // Procesa la sintaxis 'data' (data nombre : tipo = valor)
+    Instruction parseVariableAssignment();
 
 public:
     explicit Parser(std::vector<Token> tokens);

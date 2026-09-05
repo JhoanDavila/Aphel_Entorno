@@ -165,3 +165,53 @@ contiene la implementación del resolvedor de rutas de archivos para el entorno 
 metodos:
 
 - resolve(const std::string& customPath, const std::string& basePath): segmenta la cadena de texto de entrada utilizando el delimitador `;`. Recorre cada segmento sustituyendo las secuencias `--` por el operador de directorio superior (`..`) y agregando los nombres de carpetas o archivos a una instancia de `std::filesystem::path`. Finalmente, aplica `lexically_normal()` para simplificar y sanitizar la ruta resultante antes de retornarla como un `std::string`.
+
+## SymbolTable.h
+Declara la estructura de datos para el almacenamiento de variables y la interfaz de la tabla de símbolos encargada de la gestión del ámbito global en AphelG.
+
+### Estructuras y Atributos
+* **Variable:** Estructura de datos contenedora que almacena la información de una variable declarada. Guarda el nombre (`name`), el tipo de dato (`type`), así como los contenedores específicos para sus valores reales: cadena de texto (`stringVal`), entero de 64 bits (`intVal`), punto flotante (`dblVal`), entero sin signo de 64 bits (`natVal`) y booleano (`boolVal`).
+* **table:** Mapa asociativo (`std::unordered_map<std::string, Variable>`) que vincula el nombre identificador con su correspondiente registro de tipo `Variable`.
+
+### Métodos
+* **SymbolTable():** Constructor por defecto que inicializa una tabla de símbolos vacía.
+* **declareVariable(const Instruction& inst, std::string& outError):** Procesa la instrucción de declaración, valida las reglas numéricas estándar según el tipo (`int`, `nat`, `dbl`, `txt`, `bool`) y la almacena en el mapa. Si la variable ya existe o rompe el rango permitido, genera el mensaje pertinente en `outError` y retorna falso.
+* **exists(const std::string& name) const:** Consulta la presencia de una variable dentro de la tabla asociativa retornando un valor booleano.
+
+---
+
+## SymbolTable.cpp
+Contiene la implementación lógica para el registro y la validación semántica de variables en la tabla de símbolos. No define nuevos atributos de estado, opera sobre los miembros heredados de `SymbolTable.h`.
+
+### Métodos
+* **exists(const std::string& name) const:** Verifica si el identificador clave se encuentra registrado en el contenedor `table`.
+* **declareVariable(const Instruction& inst, std::string& outError):** Comprueba la unicidad de la variable. En caso de asignación de texto (`TXT`), remueve comillas envolventes. Para enteros (`INT` y `NAT`), valida que las constantes literales no excedan los límites numéricos de 32 bits (`int32_t` y `uint32_t`). Para tipos `BOOL`, valida cadenas booleanas (`"true"`, `"false"`, `"1"`, `"0"`). Al pasar las validaciones, empaqueta y asigna el nodo `Variable` en `table`.
+
+---
+
+## AphelEngine.h
+Declara el motor de ejecución principal (*runtime*) que interpreta el Árbol de Sintaxis Abstracta (AST) e integra todos los subsistemas del entorno AphelG.
+
+### Atributos
+* **loadedWindows:** Mapa asociativo (`std::unordered_map<std::string, std::shared_ptr<Node>>`) que gestiona las referencias a las ventanas de UI cargadas dinámicamente mediante sus identificadores.
+* **symbolTable:** Instancia persistente de `SymbolTable` encargada de conservar el estado de las variables declaradas durante el ciclo de vida de la ejecución.
+
+### Métodos
+* **AphelEngine():** Constructor por defecto.
+* **executeFileDeclaration(const Instruction& inst):** Método privado que traduce y resuelve la ruta de interfaz, invocando la carga física del recurso de interfaz UI.
+* **executeRenderCommand(const Instruction& inst):** Método privado que busca la ventana asociada en `loadedWindows` e inicia el motor de renderizado gráfico.
+* **executeDataDeclaration(const Instruction& inst):** Método privado que envía las órdenes de creación de variables a la instancia `symbolTable`.
+* **execute(const std::vector<Instruction>& instructions):** Evalúa secuencialmente las instrucciones del AST desviándolas a sus respectivos gestores de ejecución.
+* **runScript(const std::string& filePath):** Método estático principal que actúa como punto de entrada de alto nivel. Lee el archivo fuente, orquesta las fases de limpieza, tokenización, parseo y ejecución, e informa los errores compilados.
+
+---
+
+## AphelEngine.cpp
+Contiene la implementación del entorno de ejecución, conectando los lectores de interfaz, resolvedor de rutas, parser y renderizador gráfico. No define atributos adicionales, coordina las invocaciones internas del subsistema.
+
+### Métodos
+* **runScript(const std::string& filePath):** Abre el flujo de archivo y transfiere el contenido a `AphlgCleaner::clean`. Pasa el texto a `Tokenizer` y posteriormente a `Parser`. Si existen errores sintácticos acumulados en `ErrorManager`, interrumpe el flujo e imprime el diagnóstico. Si el AST es válido, delega el control a `execute` y revisa la existencia de excepciones en tiempo de ejecución.
+* **executeFileDeclaration(const Instruction& inst):** Procesa la ruta con `PathResolver::resolve()`, carga la estructura de nodos mediante `AphluiReader::loadFromFile()` y la almacena dentro de `loadedWindows` mediante su alias.
+* **executeRenderCommand(const Instruction& inst):** Recupera el puntero de la ventana en `loadedWindows`. Inicializa la ventana con `RenderEngine` y mantiene el bucle gráfico activado.
+* **executeDataDeclaration(const Instruction& inst):** Solicita la reserva de espacio en `symbolTable` y delega a `ErrorManager` en caso de fallos de tipo o desbordamientos.
+* **execute(const std::vector<Instruction>& instructions):** Recorre en orden de aparición la colección de instrucciones procesando la carga de archivos, comandos de renderizado o declaración de datos.

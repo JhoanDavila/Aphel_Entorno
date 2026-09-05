@@ -1,33 +1,31 @@
-#ifndef APHELG_APHEL_ENGINE_H
-#define APHELG_APHEL_ENGINE_H
+#ifndef APHEL_ENGINE_H
+#define APHEL_ENGINE_H
 
 #include "../Parser/AST.h"
-#include "../../../ui/nodes/node/Node.h"
+#include "../SymbolTable/SymbolTable.h"
+#include "../../../ui/lector_aphelui/reader/AphluiReader.h"
 #include <string>
-#include <vector>
 #include <unordered_map>
 #include <memory>
+#include <vector>
 
 namespace AphelG {
 
 class AphelEngine {
+public:
+    static bool runScript(const std::string& filePath);
+    void execute(const std::vector<Instruction>& instructions);
+
 private:
-    // Mapea el alias (ej: "ventana") con el nodo raíz de la UI cargada
+    SymbolTable symbolTable; // Agregado para resolver 'symbolTable is undefined'
     std::unordered_map<std::string, std::shared_ptr<Node>> loadedWindows;
 
     void executeFileDeclaration(const Instruction& inst);
     void executeRenderCommand(const Instruction& inst);
-
-public:
-    AphelEngine() = default;
-
-    // Ejecuta la lista de instrucciones del AST
-    void execute(const std::vector<Instruction>& instructions);
-
-    // Método de alto nivel que encapsula todo el pipeline (Clean -> Tokenize -> Parse -> Execute)
-    static bool runScript(const std::string& filePath);
+    void executeDataDeclaration(const Instruction& inst);
+    void executeVariableAssignment(const Instruction& inst); // Agregado para resolver 'executeVariableAssignment is undefined'
 };
 
 } // namespace AphelG
 
-#endif // APHELG_APHEL_ENGINE_H
+#endif // APHEL_ENGINE_H
